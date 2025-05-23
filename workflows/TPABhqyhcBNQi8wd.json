@@ -1,0 +1,156 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        []
+      ]
+    },
+    "Gmail": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-05-09T18:01:14.241Z",
+  "id": "TPABhqyhcBNQi8wd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Testing Google Account",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -60
+      ],
+      "id": "110363d9-01eb-4342-99d6-f4702aab2de6",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1RcRdPFLcrvakKBPhCAcsCxbZBZvAV2L2JWPyVvzmBFA",
+          "mode": "list",
+          "cachedResultName": "demo-table",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RcRdPFLcrvakKBPhCAcsCxbZBZvAV2L2JWPyVvzmBFA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RcRdPFLcrvakKBPhCAcsCxbZBZvAV2L2JWPyVvzmBFA/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        120,
+        -60
+      ],
+      "id": "c0ddac67-9022-4a9f-bd46-937b6ab14017",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "yGrwAhpYRJROnOS2",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1wGlZ3GAiZv7LTKEBuQYVp4Eux--GKh61",
+          "mode": "list",
+          "cachedResultName": "Use these top 10 ChatGPT prompts.md",
+          "cachedResultUrl": "https://drive.google.com/file/d/1wGlZ3GAiZv7LTKEBuQYVp4Eux--GKh61/view?usp=drivesdk"
+        },
+        "name": "This is Copy from n8n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        120,
+        -240
+      ],
+      "id": "b4a4b497-14a5-4de3-834f-5c1db4eec207",
+      "name": "Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "QpoHr2aBj4BXOdjN",
+          "name": "Google Drive account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sendTo": "baraka0124@gmail.com",
+        "subject": "Hello my friend ",
+        "message": "This is test message from n8n workflow",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        120,
+        140
+      ],
+      "id": "b4f9f890-6cc0-4c09-99b1-694379c02f32",
+      "name": "Gmail",
+      "webhookId": "397f566c-8b89-48be-a975-2e659927503c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "g6fojtL8BfjpN96y",
+          "name": "Gmail account"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Test workflow’": [
+      {
+        "json": {}
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-16T22:47:53.000Z",
+  "versionId": "77b76189-3c01-492a-90dd-65ce5e8b09d0"
+}

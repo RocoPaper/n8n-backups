@@ -1,0 +1,247 @@
+{
+  "active": false,
+  "connections": {
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Summarize": {
+      "main": [
+        [
+          {
+            "node": "Process Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Email": {
+      "main": [
+        [
+          {
+            "node": "Route Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route Email": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Generate Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Slack - Urgent Notification",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail - Mark for Attention",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Generate Response": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Send Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Send Reply": {
+      "main": [
+        [
+          {
+            "node": "Slack - Notify Team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-08T18:20:33.456Z",
+  "id": "CtNmo5S3zeCJANqc",
+  "meta": null,
+  "name": "Email Summarize",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cad96458-8685-4a6e-8bbb-0b6e118e3646",
+      "name": "IMAP Email",
+      "type": "n8n-nodes-base.imapEmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1340,
+        260
+      ],
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "e4fb5aaf-8678-4771-bc7a-f3d02e7ec873",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        -1340,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "chat",
+        "requestOptions": {}
+      },
+      "id": "51d691df-dbc2-4099-93c0-4e1ce22c25dc",
+      "name": "OpenAI - Summarize",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Parse the OpenAI response to extract the summary details\nconst aiResponse = items[0].json.response.choices[0].message.content;\n\n// Extract original email information\nconst originalEmail = {\n  from: items[0].json.from,\n  subject: items[0].json.subject,\n  text: items[0].json.text,\n  to: items[0].json.to,\n  messageId: items[0].json.messageId\n};\n\n// Categorize the email based on AI summary\nlet category = 'general';\nlet requiresHumanAttention = false;\nlet autoReplyAppropriate = true;\n\n// Check for appointment request\nif (aiResponse.toLowerCase().includes('appointment request') || \n    aiResponse.toLowerCase().includes('book a session') || \n    aiResponse.toLowerCase().includes('schedule a massage')) {\n  category = 'appointment';\n}\n\n// Check for cancellation\nif (aiResponse.toLowerCase().includes('cancel') || \n    aiResponse.toLowerCase().includes('reschedule')) {\n  category = 'cancellation';\n}\n\n// Check for urgent issues\nif (aiResponse.toLowerCase().includes('urgent') || \n    aiResponse.toLowerCase().includes('emergency') || \n    aiResponse.toLowerCase().includes('immediate')) {\n  requiresHumanAttention = true;\n}\n\n// Check for complex inquiries that might need human attention\nif (aiResponse.toLowerCase().includes('refund') || \n    aiResponse.toLowerCase().includes('complaint') || \n    aiResponse.toLowerCase().includes('dissatisfied') ||\n    aiResponse.toLowerCase().includes('injury') ||\n    aiResponse.toLowerCase().includes('pain')) {\n  requiresHumanAttention = true;\n}\n\n// Return the processed data\nreturn {\n  json: {\n    ...items[0].json,\n    summary: aiResponse,\n    category,\n    requiresHumanAttention,\n    autoReplyAppropriate,\n    originalEmail\n  }\n};"
+      },
+      "id": "f7c3f620-84f2-4e15-8de5-dc0b2606e957",
+      "name": "Process Email",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        -900,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Process Email\"].json[\"requiresHumanAttention\"]}}",
+              "value2": "true"
+            }
+          ]
+        }
+      },
+      "id": "3bf5dff8-12b3-44ec-82e2-ef37f800509e",
+      "name": "Route Email",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -680,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "subject": "=Re: {{$node[\"Process Email\"].json.originalEmail.subject}}",
+        "message": "={{$node[\"OpenAI - Generate Response\"].json[\"response\"][\"choices\"][0][\"message\"][\"content\"]}}",
+        "options": {}
+      },
+      "id": "8329e538-08b8-4c53-8196-f350445458fa",
+      "name": "Gmail - Send Reply",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -240,
+        520
+      ],
+      "webhookId": "daacf9ca-6070-44af-9046-7ba6d127572e"
+    },
+    {
+      "parameters": {
+        "operation": "chat",
+        "requestOptions": {}
+      },
+      "id": "a9b39c70-df0b-46b2-a014-86acf162fa59",
+      "name": "OpenAI - Generate Response",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "channel": "C01234567",
+        "text": "=📧 *New Email Processed*\n\n*From:* {{$node[\"Process Email\"].json.originalEmail.from}}\n*Subject:* {{$node[\"Process Email\"].json.originalEmail.subject}}\n\n*Summary:* {{$node[\"Process Email\"].json[\"summary\"]}}\n\n*Category:* {{$node[\"Process Email\"].json[\"category\"]}}\n*Requires Human Attention:* {{$node[\"Process Email\"].json[\"requiresHumanAttention\"]}}\n\n*Auto-Response:* \n```\n{{$node[\"OpenAI - Generate Response\"].json[\"response\"][\"choices\"][0][\"message\"][\"content\"]}}\n```",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "id": "796841cc-5094-4de3-b443-944facf2337a",
+      "name": "Slack - Notify Team",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "channel": "C01234567",
+        "text": "=🚨 *Urgent Email Requires Attention* 🚨\n\n*From:* {{$node[\"Process Email\"].json.originalEmail.from}}\n*Subject:* {{$node[\"Process Email\"].json.originalEmail.subject}}\n\n*Summary:* {{$node[\"Process Email\"].json[\"summary\"]}}\n\n*Category:* {{$node[\"Process Email\"].json[\"category\"]}}\n\nPlease review this email as soon as possible.",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "id": "cab145a1-cd64-4fd2-b4b3-a4cdf979e59e",
+      "name": "Slack - Urgent Notification",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f3db4442-4c5b-4e82-9524-fcc657fe5b22",
+      "name": "Gmail - Mark for Attention",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -460,
+        920
+      ],
+      "webhookId": "ccea4e0a-13e5-4ad8-8de3-60f6a68e5f46"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-08T18:20:33.456Z",
+  "versionId": "606cf3c4-6947-4428-a98c-577bed9a45d7"
+}

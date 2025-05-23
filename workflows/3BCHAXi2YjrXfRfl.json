@@ -1,0 +1,89 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "X",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-21T14:36:04.057Z",
+  "id": "3BCHAXi2YjrXfRfl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Twitter Bot",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "85231a05-94d9-4700-977e-984606dbc7e4",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "text": "This is test from N8n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        640,
+        0
+      ],
+      "id": "c018ae18-3b40-4402-b4e6-57c1e0cce7a2",
+      "name": "X",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "AGBnDbnwHRbmhInR",
+          "name": "X account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        220,
+        0
+      ],
+      "id": "5b135473-87ef-41c2-bfa0-bef210ee0d5c",
+      "name": "AI Agent"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-21T14:39:18.000Z",
+  "versionId": "690cc2a7-ed91-461c-913e-584c6564f439"
+}

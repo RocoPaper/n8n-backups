@@ -1,0 +1,169 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Wait5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-14T18:13:35.428Z",
+  "id": "ACMjjc0ibccQXJaj",
+  "meta": null,
+  "name": "Testing Nodes",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        -60
+      ],
+      "id": "ede9e937-3ed7-41b8-9bf2-67136b279745",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        -220
+      ],
+      "id": "378d9d21-62b9-4149-94f2-e50fffea5017",
+      "name": "Wait",
+      "webhookId": "4812f819-3b60-40f4-a0c8-c6a2b5133aee"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        -40
+      ],
+      "id": "8948af3e-b34f-42d9-b461-5f3c7dffdc72",
+      "name": "Wait1",
+      "webhookId": "4812f819-3b60-40f4-a0c8-c6a2b5133aee"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        140
+      ],
+      "id": "1ef70559-56ea-4468-b44c-2b5746b33a46",
+      "name": "Wait2",
+      "webhookId": "4812f819-3b60-40f4-a0c8-c6a2b5133aee"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        -220
+      ],
+      "id": "ac792043-2ead-4ed4-8ea8-d791c4f4b612",
+      "name": "Wait3",
+      "webhookId": "4812f819-3b60-40f4-a0c8-c6a2b5133aee"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        -40
+      ],
+      "id": "64ebd386-d41f-410a-a081-a293199e1775",
+      "name": "Wait4",
+      "webhookId": "4812f819-3b60-40f4-a0c8-c6a2b5133aee"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        140
+      ],
+      "id": "4a7157f9-0b14-4b5d-83f7-6c405a9a6841",
+      "name": "Wait5",
+      "webhookId": "4812f819-3b60-40f4-a0c8-c6a2b5133aee"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-14T18:14:00.000Z",
+  "versionId": "560ab171-0bfb-4a34-ae7a-a0364a3a2f82"
+}

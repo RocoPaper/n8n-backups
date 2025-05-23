@@ -1,0 +1,145 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Search": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-16T22:35:06.188Z",
+  "id": "wRbAxAJgAK0FNUkM",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "21158487-214c-4942-bbee-c962ede5a2fa",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1XSRYGYNYNPsvC4NofkjQsMVFNUdDsjA_vjzMLhzQO7c",
+          "mode": "list",
+          "cachedResultName": "Get Search",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XSRYGYNYNPsvC4NofkjQsMVFNUdDsjA_vjzMLhzQO7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XSRYGYNYNPsvC4NofkjQsMVFNUdDsjA_vjzMLhzQO7c/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        0
+      ],
+      "id": "ddb78c6b-7e39-4760-a20a-455d0329b83d",
+      "name": "Get Search",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "yGrwAhpYRJROnOS2",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "1a218f44-26d7-469c-ba89-ea1e9a88b9c8"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        460,
+        -180
+      ],
+      "id": "c8de4125-fd79-42b4-bfe7-a28c61335ded",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        120
+      ],
+      "id": "fcc61464-68c5-4ede-8dee-2381daa53138",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-17T18:54:42.000Z",
+  "versionId": "0967c6c4-a56a-482e-9f46-4686d7b75d9b"
+}

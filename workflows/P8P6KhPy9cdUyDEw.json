@@ -1,0 +1,81 @@
+{
+  "active": false,
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Search Contact in Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-16T16:31:35.284Z",
+  "id": "P8P6KhPy9cdUyDEw",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -40
+      ],
+      "id": "f270b112-8ec1-4175-ab98-30dd0f8333c7"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableTokenApi",
+        "operation": "list",
+        "application": {
+          "__rl": true,
+          "mode": "url",
+          "value": ""
+        },
+        "table": "Contacts",
+        "additionalOptions": {}
+      },
+      "name": "Search Contact in Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -40
+      ],
+      "id": "87c2c826-2620-45f7-a0ff-4675719fd75d",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sDzEwkAhHPkRTsJT",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "name": "Log Results",
+      "type": "n8n-nodes-base.log",
+      "typeVersion": 1,
+      "position": [
+        160,
+        -40
+      ],
+      "id": "7ff6ce5c-c17c-41b4-9739-0191f687ac07"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-16T17:00:03.000Z",
+  "versionId": "e8ef7195-42e3-4563-b72c-30c7b45a4c8d"
+}

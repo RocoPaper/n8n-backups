@@ -1,0 +1,220 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Email": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply Email": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T19:12:51.184Z",
+  "id": "IMOrsWKqVEJwpnFi",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Email Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        160,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }}{{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=Overview\nYou are an email management assistant. All emails must be formatted professionally in HTML and signed off as \"Nate.\"\n\n==Email Management Tools==\n\nUse \"Send Email\" to send emails.\n\nUse \"Create Draft\" if the user asks for a draft.\n\nUse \"Get Emails\" to retrieve emails when requested.\n\nUse \"Get Labels\" to retrieve Labels.\n\nUse \"Mark Unread\" to mark an email as unread. You must use \"Get Emails\" first so you have the message ID of the email to flag.\n\nUse \"Label Email\" to flag an email. You must use \"Get Emails\" first so you have the message ID of the email to flag. Then you must use \"Get Labels\" so you have the label ID.\n\nUse \"Email Reply\" to reply to an email. You must use \"Get Emails\" first so you have the message ID of the email to reply to.\n\nFinal Notes\n\nHere is the current date/time: (( $now ))"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        480,
+        340
+      ],
+      "id": "83ea4f40-1542-452e-b9a5-26a65e5e40b7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        400,
+        560
+      ],
+      "id": "15ecaefd-38f3-4984-9d85-996e7d836d8c",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9MJ1ZDhJNTFHTIFm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        700
+      ],
+      "id": "44c4fd79-1acb-4b82-aab9-ea344e247f8e",
+      "name": "Send Email",
+      "webhookId": "dfbc644a-81b8-4581-b4e1-fcbcf05944f9",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "g6fojtL8BfjpN96y",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "messageId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        720
+      ],
+      "id": "d715699a-4eb4-4d2b-b12f-e755ebf39bd2",
+      "name": "Get Email",
+      "webhookId": "52257372-5dbd-40c1-9c3e-b3bdf9b22cc4",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "g6fojtL8BfjpN96y",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message_ID', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        840,
+        680
+      ],
+      "id": "55f8d3ae-be2b-4bb6-a07a-c6d939507b09",
+      "name": "Reply Email",
+      "webhookId": "2998ea23-1424-4953-877f-5b67a21b4a8e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "g6fojtL8BfjpN96y",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        480
+      ],
+      "id": "17cbf6ca-16b5-49df-a78f-67315e6902f7",
+      "name": "When chat message received",
+      "webhookId": "df04c0b4-5dc7-41dc-9b0d-3a378f4d6ffc"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-16T14:31:09.000Z",
+  "versionId": "251948eb-daf5-419e-bcfb-77d794daf1b2"
+}

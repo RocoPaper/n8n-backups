@@ -1,0 +1,142 @@
+{
+  "active": false,
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-16T16:43:51.664Z",
+  "id": "ppRuTrj2AgD6zkhV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Contact Agent copy",
+  "nodes": [
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        400,
+        520
+      ],
+      "id": "7f693dcc-86dc-4ef5-b1eb-8acb44bef8d5",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9MJ1ZDhJNTFHTIFm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        280
+      ],
+      "id": "860868ff-5ceb-421a-86dc-3df02f88a2b9",
+      "name": "When chat message received",
+      "webhookId": "d9b84fc5-c573-4dc5-bd10-683a1adc21b1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a contact management assistant. Your responsibilities include looking up contacts, adding new contacts, or updating a contact's information.\n\n==Contact Management==\n\nUse \"Get Contacts\" tool to retrieve contact information."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        420,
+        280
+      ],
+      "id": "195bda14-f223-4ad2-91a5-2aca63b53240",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appjdPfiavD1IqEjb",
+          "mode": "list",
+          "cachedResultName": "contacts-short",
+          "cachedResultUrl": "https://airtable.com/appjdPfiavD1IqEjb"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0BFrozTWGgJdBZ",
+          "mode": "list",
+          "cachedResultName": "contact table",
+          "cachedResultUrl": "https://airtable.com/appjdPfiavD1IqEjb/tbl0BFrozTWGgJdBZ"
+        },
+        "filterByFormula": "={{ $fromAI('Filter_By_Formula', `you can use this formula: ({First Name}='Musab')`, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        520
+      ],
+      "id": "992b2a2f-c71a-43f3-91a3-65f23fdbaf3f",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sDzEwkAhHPkRTsJT",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-18T16:45:13.000Z",
+  "versionId": "184f0151-ad77-4b96-a79d-83f7acd45a9c"
+}

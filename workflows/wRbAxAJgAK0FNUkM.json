@@ -31,10 +31,11 @@
   },
   "createdAt": "2025-05-16T22:35:06.188Z",
   "id": "wRbAxAJgAK0FNUkM",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 2",
+  "name": "G Sheet Test",
   "nodes": [
     {
       "parameters": {},
@@ -140,6 +141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-05-17T18:54:42.000Z",
-  "versionId": "0967c6c4-a56a-482e-9f46-4686d7b75d9b"
+  "updatedAt": "2025-05-30T23:09:34.000Z",
+  "versionId": "11a402a7-e7d9-498a-8fd7-30c67ca62a43"
 }

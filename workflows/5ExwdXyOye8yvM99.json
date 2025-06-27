@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Wait for Response",
             "type": "main",
             "index": 0
           }
@@ -38,7 +38,103 @@
       "main": [
         [
           {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Response": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Tool": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Telegram2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
             "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI1",
             "type": "main",
             "index": 0
           }
@@ -48,6 +144,7 @@
   },
   "createdAt": "2025-05-06T14:20:27.357Z",
   "id": "5ExwdXyOye8yvM99",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -63,8 +160,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        480,
-        180
+        0,
+        140
       ],
       "id": "6b79822e-9a78-4b95-87d9-a9fd7bb8d99f",
       "name": "Telegram Trigger",
@@ -79,14 +176,17 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $json.message.text }}",
-        "options": {}
+        "text": "={{ $('Telegram Trigger').item.json.message.text ?? $json.text}}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are a multimodal AI assistant designed to respond in the same format as your input. If you receive text input, respond with text output. If you receive voice input, respond with voice output. Your responses should be helpful, concise, and tailored to the input modality. For text inputs, format your responses clearly with appropriate markdown. For voice inputs, structure your responses for optimal auditory comprehension. Maintain context awareness across interactions and adapt your responses to the user's preferred communication channel.,\n  \"response_rules\": {\n    \"text_input\": {\n      \"response_format\": \"text\",\n      \"structure\": \"Markdown formatting when helpful\",\n      \"examples\": [\"**Text response**\", \"- List items\", \"Clear paragraphs\"]\n    },\n    \"voice_input\": {\n      \"response_format\": \"voice\",\n      \"structure\": \"Conversational, slightly slower pacing\",\n      \"examples\": [\"Audio file response\", \"Voice-optimized phrasing\"]\n    },\n    \"fallback\": \"When input type is unclear, default to text response with a request for clarification\"\n  },\n  \"trigger_conditions\": {\n    \"on_text\": \"Process as text interaction\",\n    \"on_voice\": \"Process as voice interaction\",\n    \"on_unknown\": \"Request input type clarification\"\n  }\n}\n\n"
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        720,
-        180
+        1132,
+        140
       ],
       "id": "f944cdd4-be85-43fe-bcbf-96a59942f91e",
       "name": "AI Agent"
@@ -99,8 +199,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        680,
-        420
+        1100,
+        360
       ],
       "id": "30893be9-4a0b-4317-b5b3-418a88b9d6f2",
       "name": "Google Gemini Chat Model",
@@ -114,13 +214,13 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $json.message.text }}"
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        820,
-        420
+        1220,
+        360
       ],
       "id": "f31c4edb-13c9-4ecd-961b-1528f3421fee",
       "name": "Simple Memory"
@@ -128,7 +228,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
-        "text": "={{ $json.output }}",
+        "text": "={{ $json.output.text }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -136,8 +236,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1100,
-        180
+        1760,
+        40
       ],
       "id": "c12936fa-d214-4ad5-91a4-7e60ce74d32a",
       "name": "Telegram",
@@ -148,6 +248,247 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "Sure, one moment...",
+        "additionalFields": {
+          "appendAttribution": false,
+          "reply_to_message_id": "={{ $json.message.message_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        140
+      ],
+      "id": "634c67bd-a32e-4d3c-90f4-6b1013a825dd",
+      "name": "Wait for Response",
+      "webhookId": "9f4db7f5-f521-4c88-a9c6-8c063d965e03",
+      "credentials": {
+        "telegramApi": {
+          "id": "gWrzPJFYKGNQEjUn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.result.reply_to_message.voice.file_id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "4c2f1dc0-130d-462a-a5b2-ae838e76f58f"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "53b45a40-c0f5-4b22-ab05-3805197129dd",
+                    "leftValue": "={{ $json.result.reply_to_message.voice.file_id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        440,
+        140
+      ],
+      "id": "1c58d53c-7e59-48d0-b83a-9d93c63197a3",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.result.reply_to_message.voice.file_id }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        215
+      ],
+      "id": "a73e2b0a-8fdc-4553-b8a6-f982bd748871",
+      "name": "Telegram1",
+      "webhookId": "bd1fc34f-ccc8-4b85-8938-4c476a2054da",
+      "credentials": {
+        "telegramApi": {
+          "id": "gWrzPJFYKGNQEjUn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        880,
+        215
+      ],
+      "id": "0e4a9e65-d0ee-46bc-b067-e3ec8bda6fce",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "ZofliNVc6SuIgvhO",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Example: convert the incoming query to uppercase and return it\nreturn ",
+        "specifyInputSchema": true,
+        "jsonSchemaExample": "{\n\t\"text\": \"TEXT_OUTPUT_FROM_AI_AGENT\",\n  \"voice\": \"VOICE_OUTPUT_FROM_AI_AGENT\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        500
+      ],
+      "id": "a426b657-aa36-4d65-b280-55e7e4bf1a6c",
+      "name": "Code Tool",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"text\": \"TEXT_OUTPUT_FROM_AI_AGENT\",\n  \"voice\": \"VOICE_OUTPUT_FROM_AI_AGENT\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1340,
+        360
+      ],
+      "id": "fa967432-a6f0-416e-a250-6483ce847dbb",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "input": "={{ $json.output.voice }}",
+        "options": {
+          "response_format": "opus"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1760,
+        240
+      ],
+      "id": "d656eaa1-de5b-4ad3-be7e-965ca13c49e5",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "ZofliNVc6SuIgvhO",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendAudio",
+        "chatId": "={{ $('Switch').item.json.result.chat.id }}",
+        "binaryData": true,
+        "additionalFields": {
+          "reply_to_message_id": "={{ $('Switch').item.json.result.message_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1980,
+        240
+      ],
+      "id": "a1bd47b3-9c54-4bde-8998-50b271f5d0ea",
+      "name": "Telegram2",
+      "webhookId": "3ca3930a-f727-438c-84bd-40183b89b60b",
+      "credentials": {
+        "telegramApi": {
+          "id": "gWrzPJFYKGNQEjUn",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0019a9fd-1f88-4b08-9ec4-5739fe045c52",
+              "leftValue": "={{ $json.output.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        140
+      ],
+      "id": "4a0cef12-2d89-49da-bab6-5132f447544d",
+      "name": "If"
     }
   ],
   "pinData": {},
@@ -157,6 +498,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-17T18:52:35.000Z",
-  "versionId": "ee3d2355-fc43-4996-a6f5-b80722b407a2"
+  "updatedAt": "2025-05-31T17:10:44.000Z",
+  "versionId": "fb5b47f8-071d-46e4-8f28-5590dfb1552a"
 }

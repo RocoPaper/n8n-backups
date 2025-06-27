@@ -1,0 +1,220 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T19:09:31.338Z",
+  "id": "A8J1WiVqs6aHgIcs",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Multi Agent system",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a309f7a0-ffab-4981-89a2-e79663ac2a1c",
+      "name": "When chat message received",
+      "webhookId": "d5db904b-4539-44c4-a945-e0ead0c40f67"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=## Overview\nYou are the ultimate personal assistant. Your job is to send the user's query to the correct tool. You should never be writing emails, or creating even summaries, you just need to call the correct tool.\n\n## Tools\n- Think: Use this to think deeply or if you get stuck  \n- emailAgent: Use this tool to take action in email  \n- calendarAgent: Use this tool to take action in calendar  \n- contactAgent: Use this tool to get, update, or add contacts  \n- contentCreator: Use this tool to create blog posts  \n- Tavily: Use this tool to search the web  \n\n## Rules\n- Some actions require you to look up contact information first. For the following actions, you must get email address and send that to the agent who needs it:  \n  - sending emails  \n  - drafting emails  \n  - creating calendar event with attendee  \n\n## Instructions\n1) Call the necessary tools based on the user request  \n2) Use the \"Think\" tool to verify you took the right steps. This tool should be called every time.  \n\n## Examples\n1)  \n- Input: send an email to note herkelman asking him what time he wants to leave  \n  - Action: Use contactAgent to get note herkelman's email  \n  - Action: Use emailAgent to send the email. You will pass the tool a query like \"send note herkelman an email to ask what time he wants to leave. here is his email: [email address]  \n- Output: The email has been sent to Note Herkelman. Anything else I can help you with?\n\n## final Reminder\nHere is the current date/time: {{ $now }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "4f858d26-7bd2-4f31-a2a3-ec5b63c937c7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        500,
+        220
+      ],
+      "id": "85f7e44b-ca17-448a-b675-122cec25c943",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "description": "call this tool when you want to send the email after after you got the contact from the contact agent",
+        "workflowId": {
+          "__rl": true,
+          "value": "IMOrsWKqVEJwpnFi",
+          "mode": "list",
+          "cachedResultName": "Email Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        340,
+        440
+      ],
+      "id": "f8b24946-4db9-4ccc-8a5e-e2cd3618f3ac",
+      "name": "Email Agent"
+    },
+    {
+      "parameters": {
+        "description": "=call this tool when you want to get any contact details like (email or phone number) base on the user request ",
+        "workflowId": {
+          "__rl": true,
+          "value": "3QxVxyVNtS43Y3gH",
+          "mode": "list",
+          "cachedResultName": "Contact Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        440
+      ],
+      "id": "c3f93e84-8fec-44e5-937f-27d128a8d032",
+      "name": "Contact Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        280,
+        240
+      ],
+      "id": "190b9827-14e0-4ed9-91ee-73d16189bbbb",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        140,
+        220
+      ],
+      "id": "102afd83-628d-4804-9ba9-00bf8a88fa73",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "ZofliNVc6SuIgvhO",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-16T17:00:08.000Z",
+  "versionId": "8054ba10-0bba-4ff2-ad67-1a0740a9880d"
+}

@@ -1,0 +1,808 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contacts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add or Update Contact": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-14T19:25:25.593Z",
+  "id": "3QxVxyVNtS43Y3gH",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Contact Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        200,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        400,
+        600
+      ],
+      "id": "246f956f-8aca-48c4-951a-23dee5107dc7",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9MJ1ZDhJNTFHTIFm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        480
+      ],
+      "id": "8d3895b9-1e36-4175-b2dc-bcf828b344ed",
+      "name": "When chat message received",
+      "webhookId": "07f8a960-1fe4-4c1d-9a8b-c34f612063dd"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appjdPfiavD1IqEjb",
+          "mode": "list",
+          "cachedResultName": "contacts-short",
+          "cachedResultUrl": "https://airtable.com/appjdPfiavD1IqEjb"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0BFrozTWGgJdBZ",
+          "mode": "list",
+          "cachedResultName": "contact table",
+          "cachedResultUrl": "https://airtable.com/appjdPfiavD1IqEjb/tbl0BFrozTWGgJdBZ"
+        },
+        "filterByFormula": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Filter_By_Formula', `Search here for the contact, you can use this formula:\nIF(\n  AND(\n    {Search Input},\n    SEARCH({Search Input}, CONCATENATE({First Name}, \" \", {Last Name}))\n  ),\n  TRUE,\n  FALSE\n)`, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        580,
+        600
+      ],
+      "id": "674ce31c-d955-4fee-8df7-becccfa8fbc9",
+      "name": "Get Contacts",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sDzEwkAhHPkRTsJT",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.query }} {{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=You are a contact management assistant. Your responsibilities include looking up contacts, adding new contacts, or updating a contact's information.\n\n==Contact Management==\n\nUse \"Get Contacts\" to retrieve contact information.\n\nUse \"Add or Update Contact\" to store new contact information or modify existing entries.\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        420,
+        280
+      ],
+      "id": "13ee6741-e497-4b79-8b8b-4b8b3ff9fe52",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appXY1EioiIwJOdao",
+          "mode": "list",
+          "cachedResultName": "contacts.csv",
+          "cachedResultUrl": "https://airtable.com/appXY1EioiIwJOdao"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl0BFrozTWGgJdBZ",
+          "mode": "list",
+          "cachedResultName": "Imported table",
+          "cachedResultUrl": "https://airtable.com/appXY1EioiIwJOdao/tbl0BFrozTWGgJdBZ"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "First Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('First_Name', ``, 'string') }}",
+            "Middle Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Middle_Name', ``, 'string') }}",
+            "Last Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Last_Name', ``, 'string') }}",
+            "Phonetic First Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Phonetic_First_Name', ``, 'string') }}",
+            "Organization Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Organization_Name', ``, 'string') }}",
+            "Organization Title": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Organization_Title', ``, 'string') }}",
+            "Organization Department": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Organization_Department', ``, 'string') }}",
+            "Photo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Photo', ``, 'string') }}",
+            "Birthday": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Birthday', ``, 'string') }}",
+            "Address 1 - Street": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Address_1_-_Street', ``, 'string') }}",
+            "Address 1 - Formatted": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Address_1_-_Formatted', ``, 'string') }}",
+            "Address 1 - Label": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Address_1_-_Label', ``, 'string') }}",
+            "Phone 4 - Value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Phone_4_-_Value', ``, 'string') }}",
+            "Phone 1 - Value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Phone_1_-_Value', ``, 'string') }}",
+            "Phone 1 - Label": "Work",
+            "E-mail 1 - Value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('E-mail_1_-_Value', ``, 'string') }}",
+            "E-mail 1 - Label": "* Work",
+            "Labels": "* myContacts",
+            "Address 1 - City": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Address_1_-_City', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Middle Name",
+              "displayName": "Middle Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phonetic First Name",
+              "displayName": "Phonetic First Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Organization Name",
+              "displayName": "Organization Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Organization Title",
+              "displayName": "Organization Title",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Organization Department",
+              "displayName": "Organization Department",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Photo",
+              "displayName": "Photo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Labels",
+              "displayName": "Labels",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "* myContacts",
+                  "value": "* myContacts"
+                },
+                {
+                  "name": "family ::: * myContacts ::: * starred",
+                  "value": "family ::: * myContacts ::: * starred"
+                },
+                {
+                  "name": "* coworkers ::: * myContacts",
+                  "value": "* coworkers ::: * myContacts"
+                },
+                {
+                  "name": "* myContacts ::: * starred",
+                  "value": "* myContacts ::: * starred"
+                },
+                {
+                  "name": "family ::: * myContacts",
+                  "value": "family ::: * myContacts"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-mail 1 - Label",
+              "displayName": "E-mail 1 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "* ",
+                  "value": "* "
+                },
+                {
+                  "name": "* Home",
+                  "value": "* Home"
+                },
+                {
+                  "name": "* Other",
+                  "value": "* Other"
+                },
+                {
+                  "name": "* Work",
+                  "value": "* Work"
+                },
+                {
+                  "name": "* INTERNET",
+                  "value": "* INTERNET"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-mail 1 - Value",
+              "displayName": "E-mail 1 - Value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone 1 - Label",
+              "displayName": "Phone 1 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Mobile",
+                  "value": "Mobile"
+                },
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "Home",
+                  "value": "Home"
+                },
+                {
+                  "name": "Work",
+                  "value": "Work"
+                },
+                {
+                  "name": "الجوّال",
+                  "value": "الجوّال"
+                },
+                {
+                  "name": "الجوال",
+                  "value": "الجوال"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone 1 - Value",
+              "displayName": "Phone 1 - Value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone 2 - Label",
+              "displayName": "Phone 2 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "Somalia",
+                  "value": "Somalia"
+                },
+                {
+                  "name": "Home",
+                  "value": "Home"
+                },
+                {
+                  "name": "Work",
+                  "value": "Work"
+                },
+                {
+                  "name": "Mobile",
+                  "value": "Mobile"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone 2 - Value",
+              "displayName": "Phone 2 - Value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone 3 - Label",
+              "displayName": "Phone 3 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "Djibouti",
+                  "value": "Djibouti"
+                },
+                {
+                  "name": "Home",
+                  "value": "Home"
+                },
+                {
+                  "name": "Work",
+                  "value": "Work"
+                },
+                {
+                  "name": "Ext",
+                  "value": "Ext"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone 3 - Value",
+              "displayName": "Phone 3 - Value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone 4 - Label",
+              "displayName": "Phone 4 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone 4 - Value",
+              "displayName": "Phone 4 - Value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address 1 - Label",
+              "displayName": "Address 1 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address 1 - Formatted",
+              "displayName": "Address 1 - Formatted",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address 1 - Street",
+              "displayName": "Address 1 - Street",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address 1 - City",
+              "displayName": "Address 1 - City",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address 1 - PO Box",
+              "displayName": "Address 1 - PO Box",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Address 1 - Region",
+              "displayName": "Address 1 - Region",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Address 1 - Postal Code",
+              "displayName": "Address 1 - Postal Code",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Address 1 - Country",
+              "displayName": "Address 1 - Country",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Address 1 - Extended Address",
+              "displayName": "Address 1 - Extended Address",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Website 1 - Label",
+              "displayName": "Website 1 - Label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "Profile",
+                  "value": "Profile"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Website 1 - Value",
+              "displayName": "Website 1 - Value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phonetic Middle Name",
+              "displayName": "Phonetic Middle Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phonetic Last Name",
+              "displayName": "Phonetic Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Name Prefix",
+              "displayName": "Name Prefix",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "",
+                  "value": ""
+                },
+                {
+                  "name": "Mr.",
+                  "value": "Mr."
+                },
+                {
+                  "name": "Ms.",
+                  "value": "Ms."
+                },
+                {
+                  "name": "Mr",
+                  "value": "Mr"
+                },
+                {
+                  "name": "Mrs.",
+                  "value": "Mrs."
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Name Suffix",
+              "displayName": "Name Suffix",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nickname",
+              "displayName": "Nickname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "File As",
+              "displayName": "File As",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Birthday",
+              "displayName": "Birthday",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        780,
+        600
+      ],
+      "id": "3ce5f9fa-d458-4737-a79f-add8ccfefb44",
+      "name": "Add or Update Contact",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sDzEwkAhHPkRTsJT",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-27T17:27:05.000Z",
+  "versionId": "93bf7086-5566-412e-8f15-b49d51106281"
+}

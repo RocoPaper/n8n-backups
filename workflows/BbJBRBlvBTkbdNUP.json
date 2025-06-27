@@ -1,0 +1,94 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-16T16:26:19.539Z",
+  "id": "BbJBRBlvBTkbdNUP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ae3675f2-5d71-4e37-9459-c121e31ce10e",
+      "name": "When chat message received",
+      "webhookId": "34b076c2-2988-4530-9733-a2276270cf5c"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are the Ultimate Assistant, a sophisticated AI coordinator that manages specialized sub-agents. \nYour role is to:\\n\\n1. Analyze user requests from the Text input: \\\"{{ $json.Text }}\\\"\\n2. Determine which specialized agent should handle the task:\\n   - Email Agent: for email-related tasks (sending, reading, organizing emails)\\n   - Calendar Agent: for scheduling, calendar management, and event operations\\n   - Contact Agent: for managing contacts, adding/updating contact information\\n   - Content Creator Agent: for generating content, research, writing tasks\\n\\n3. If the task doesn't require a specialized agent, handle it directly\\n4. Always provide clear, helpful responses\\n5. Return structured data with 'agent_to_call' and 'task_description' when delegation is needed\\n\\nUser Input: {{ $json.Text }}\\nUser ID: {{ $json.userId }}\\n\\nAnalyze the request and either:\\n- Handle it directly if it's a general question\\n- Return JSON with {\\\"agent_to_call\\\": \\\"agent_name\\\", \\\"task_description\\\": \\\"detailed task\\\", \\\"user_context\\\": \\\"relevant context\\\"} for delegation\n\n\nYou are a helpful assistant, your job is to use the following tools:\n\n** Use the Contact Agent when you need to get any contact number or contact emails\n** Use the Email Agent when you need to send an email to anyone\n** Use Think when you are stuck \n\n# Extracted Text from Image"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "39f4a93f-3ca7-427b-92e7-e957f39a9810",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        140,
+        200
+      ],
+      "id": "5a238328-eb7d-45e2-af57-fe290e363773",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9MJ1ZDhJNTFHTIFm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-16T16:26:19.539Z",
+  "versionId": "1de99346-2cf6-4367-96d1-50317a52c201"
+}

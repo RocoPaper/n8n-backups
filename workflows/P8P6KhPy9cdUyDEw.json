@@ -1,12 +1,61 @@
 {
   "active": false,
   "connections": {
-    "Start": {
+    "When clicking ‘Execute workflow’": {
       "main": [
         [
           {
-            "node": "Search Contact in Airtable",
+            "node": "Get Article",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Get Article": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -16,57 +65,104 @@
   "createdAt": "2025-06-16T16:31:35.284Z",
   "id": "P8P6KhPy9cdUyDEw",
   "isArchived": false,
-  "meta": null,
-  "name": "My workflow 3",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Summarize any Article",
   "nodes": [
     {
       "parameters": {},
-      "name": "Start",
-      "type": "n8n-nodes-base.start",
+      "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -240,
-        -40
+        -500,
+        0
       ],
-      "id": "f270b112-8ec1-4175-ab98-30dd0f8333c7"
+      "id": "3facd056-cdf9-48d2-881b-fcddb4dbfb41",
+      "name": "When clicking ‘Execute workflow’"
     },
     {
       "parameters": {
-        "authentication": "airtableTokenApi",
-        "operation": "list",
-        "application": {
-          "__rl": true,
-          "mode": "url",
-          "value": ""
-        },
-        "table": "Contacts",
-        "additionalOptions": {}
+        "promptType": "define",
+        "text": "={{ $json.data }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are a helpful, intelligent summarizer assistant. Your task is to identify the main body text of the article and create a detailed summary of its contents and potential implications. Identify any key subjects or themes and the main topic of the article. Also extract the exact headline from the article.\n\nExample Summary: SpaceX has experienced significant setbacks with its Starship program, with two consecutive test flights ending in explosions in recent months. These incidents have raised concerns about safety and the implications for future space exploration. The first incident occurred during Starship Flight 7 in January 2025. While specific details about the cause are not widely reported, it marked a significant failure in the Starship's development process. This incident prompted an ongoing investigation, which is crucial for addressing the issues that led to the explosion.\n\nThese consecutive failures represent important challenges for SpaceX's development timeline and have implications for the company's ambitious space exploration goals. The investigation following the January 2025 incident appears to be a key component of SpaceX's response to these technical difficulties."
+        }
       },
-      "name": "Search Contact in Airtable",
-      "type": "n8n-nodes-base.airtable",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        180,
+        0
+      ],
+      "id": "df530851-0cad-4deb-9d20-a96c81298777",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "url": "https://techcrunch.com/2025/07/07/jack-dorsey-working-on-bluetooth-messaging-app-bitchat/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -260,
+        0
+      ],
+      "id": "43464cd1-25c5-42ce-adab-0861fc980304",
+      "name": "Get Article"
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.data }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.markdown",
       "typeVersion": 1,
       "position": [
         -40,
-        -40
+        0
       ],
-      "id": "87c2c826-2620-45f7-a0ff-4675719fd75d",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "sDzEwkAhHPkRTsJT",
-          "name": "Airtable Personal Access Token account"
-        }
-      }
+      "id": "86b5bf69-8f01-4b6a-85d5-280973a4e993",
+      "name": "Markdown"
     },
     {
-      "parameters": {},
-      "name": "Log Results",
-      "type": "n8n-nodes-base.log",
-      "typeVersion": 1,
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"Headline\": \"Meta reportedly hires four more researchers from OpenAI\",\n\t\"Summary\": [\"Meta has reportedly hired four additional researchers from OpenAI — Shengjia Zhao, Jiahui Yu, Shuchao Bi, and Hongyu Ren — following earlier reports of hiring Trapit Bansal and three others. This brings the total to at least eight researchers moving from OpenAI to Meta. The hiring spree follows the underwhelming launch of Meta’s Llama 4 AI models. There’s ongoing tension between the companies, with OpenAI’s Sam Altman alleging Meta offered $100 million signing bonuses, a claim Meta’s CTO Andrew Bosworth downplayed, saying the offers were more nuanced.\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
       "position": [
-        160,
-        -40
+        380,
+        220
       ],
-      "id": "7ff6ce5c-c17c-41b4-9739-0191f687ac07"
+      "id": "98e80bbd-3d63-476a-92c3-ebbe956f3203",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        140,
+        220
+      ],
+      "id": "3c948999-1af8-433f-8e62-6e7831b92351",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "ZofliNVc6SuIgvhO",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -76,6 +172,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-06-16T17:00:03.000Z",
-  "versionId": "e8ef7195-42e3-4563-b72c-30c7b45a4c8d"
+  "updatedAt": "2025-07-08T14:20:33.000Z",
+  "versionId": "764b9311-c347-48b4-a09e-d64c6c1a82f1"
 }

@@ -286,7 +286,7 @@
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -20,
+        -80,
         640
       ],
       "typeVersion": 1
@@ -675,7 +675,7 @@
       "name": "Globals",
       "type": "n8n-nodes-base.set",
       "position": [
-        820,
+        760,
         900
       ],
       "typeVersion": 3.4
@@ -833,6 +833,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-05-23T21:17:33.000Z",
-  "versionId": "ac9b9b1e-82b9-415b-8d79-53078f5ec4f2"
+  "updatedAt": "2025-06-27T22:20:09.000Z",
+  "versionId": "76f2b9fd-2f61-459f-afdc-a893dc727efc"
 }

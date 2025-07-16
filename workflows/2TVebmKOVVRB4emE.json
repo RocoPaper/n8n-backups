@@ -16,6 +16,17 @@
       "main": [
         [
           {
+            "node": "Translate a language",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Translate a language": {
+      "main": [
+        [
+          {
             "node": "X",
             "type": "main",
             "index": 0
@@ -30,7 +41,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Twitter News Post",
+  "name": "Twitter News Post-translate",
   "nodes": [
     {
       "parameters": {},
@@ -51,7 +62,7 @@
       "type": "n8n-nodes-base.twitter",
       "typeVersion": 2,
       "position": [
-        640,
+        860,
         0
       ],
       "id": "f37e730e-7a8a-4423-a4bd-d07c9f319807",
@@ -76,6 +87,19 @@
       ],
       "id": "459ccc84-68de-4d92-8489-d70243ebf802",
       "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.deepL",
+      "typeVersion": 1,
+      "position": [
+        580,
+        0
+      ],
+      "id": "5e820618-7e4f-4292-8426-ff617a7ce55f",
+      "name": "Translate a language"
     }
   ],
   "pinData": {},
@@ -85,6 +109,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-05-21T15:22:08.969Z",
-  "versionId": "8cb45147-4061-47cc-a64a-c91ea361cf16"
+  "updatedAt": "2025-07-08T19:02:55.000Z",
+  "versionId": "1fb5f740-6906-4002-b0a2-0c7b5d809730"
 }

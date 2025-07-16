@@ -1,0 +1,825 @@
+{
+  "active": false,
+  "connections": {
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "X1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Facebook Graph API1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LinkedIn1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Trends": {
+      "main": [
+        [
+          {
+            "node": "2 Most Trending",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choosing Topic": {
+      "main": [
+        [
+          {
+            "node": "Research Topic- Perplexity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2 Most Trending": {
+      "main": [
+        [
+          {
+            "node": "High search volume keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Trends",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Research Topic- Perplexity": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "High search volume keywords": {
+      "main": [
+        [
+          {
+            "node": "Choosing Topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-30T20:02:19.455Z",
+  "id": "PcV7ejfEwGYhrSn8",
+  "isArchived": false,
+  "meta": null,
+  "name": "AI-Powered Multi-Social Media Post Automation: Google Trends & Perplexity AI",
+  "nodes": [
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "id": "5a14abdb-4b5f-4779-a445-047e531273e9",
+      "name": "X1",
+      "type": "n8n-nodes-base.twitter",
+      "position": [
+        60,
+        540
+      ],
+      "typeVersion": 2,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "options": {}
+      },
+      "id": "687ed09d-43af-4c54-9e00-a983c75905e0",
+      "name": "Facebook Graph API1",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        60,
+        140
+      ],
+      "typeVersion": 1,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "communityManagement",
+        "person": "[CONFIGURE_YOUR_LINKEDIN_PERSON_ID]",
+        "text": "={{ $json['choices[0].message.content'] }}",
+        "additionalFields": {}
+      },
+      "id": "81b82af9-338c-4e52-958c-a8f7a7510f44",
+      "name": "LinkedIn1",
+      "type": "n8n-nodes-base.linkedIn",
+      "position": [
+        80,
+        340
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "linkedInCommunityManagementOAuth2Api": {
+          "id": null,
+          "name": "[CONFIGURE_YOUR_LINKEDIN_CREDENTIALS]"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "[YOUR_GOOGLE_SHEETS_DOCUMENT_ID]",
+          "cachedResultUrl": "[YOUR_GOOGLE_SHEETS_URL]",
+          "cachedResultName": "LinkedIn Automation"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "[YOUR_GOOGLE_SHEETS_URL]",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "value": {
+            "Topic": "={{ $('Choosing Topic').item.json.message.content }}",
+            "Status": "Posted",
+            "AI Output": "={{ $json['choices[0].message.content'] }}",
+            "Date Posted": "={{ $('Schedule Trigger').item.json.timestamp }}"
+          },
+          "schema": [
+            {
+              "id": "Topic",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "Topic",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Status",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "AI Output",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "AI Output",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date Posted",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Date Posted",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "Topic"
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "a47d2c4b-7801-45b7-8690-7e63b0d106be",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        280,
+        340
+      ],
+      "typeVersion": 4.5,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": null,
+          "name": "[CONFIGURE_YOUR_GOOGLE_SHEETS_CREDENTIALS]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "choices[0].message.content",
+        "options": {}
+      },
+      "id": "65dcf0dc-90cf-4267-8f96-48c7fdc2a682",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        -160,
+        340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6
+            },
+            {
+              "triggerAtHour": 18
+            }
+          ]
+        }
+      },
+      "id": "10b25f01-2c47-41bf-b11d-66babbae441d",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -1860,
+        340
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"sonar-pro\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Act as a skilled editor revising AI-generated text to sound authentically human. Follow these rules:\\n\\n1. Punctuation Adjustments\\n   - Replace em dashes, semicolons, or rephrase sentences where appropriate.\\n   - Avoid semicolons in casual contexts; use periods or conjunctions (e.g., 'and,' 'but').\\n   - Remove mid-sentence ellipses unless mimicking deliberate hesitation.\\n   - Limit parenthetical asides; integrate explanations into the main sentence.\\n   - Use colons sparingly.\\n\\n2. Language\\n   - Replace hedging phrases with direct statements.\\n   - Avoid stock transitions.\\n   - Vary repetitive terms.\\n   - Use contractions in informal contexts.\\n   - Replace overly formal words with simpler alternatives.\\n\\n3. Style\\n   - Prioritize concise, varied sentence lengths.\\n   - Allow minor imperfections.\\n   - Maintain the core message but adjust tone to match the audience.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"You are a researcher and expert copywriter in a business development team of an AI Automation Agency. Generate exactly one LinkedIn post that adheres to LinkedIn's API formatting guidelines and is easy for humans to read. Follow these rules:\\n\\nStructure:\\n1. Hook: Start with a bold opening line using Unicode characters (e.g., \\\"𝐁𝐎𝐋𝐃 𝐒𝐓𝐀𝐓𝐄𝐌𝐄𝐍𝐓\\\").\\n2. Body: Use short paragraphs (1-3 sentences) separated by \\\\n\\\\n.\\n3. Use bullet points (•) for key features or highlights.\\n4. End with a clear call-to-action (e.g., \\\"Comment below with your thoughts!\\\").\\n\\nFormatting Requirements:\\n- Remove all numeric citation brackets like [2], [3], [4] from the text.\\n- Instead of citation brackets, if needed, add a brief phrase like \\\"according to Google I/O 2025\\\" or \\\"as reported by DeepMind\\\" naturally within the sentence.\\n- No Markdown or rich text formatting.\\n- Use Unicode characters or emojis for emphasis (e.g., ★, 🚀).\\n- Include up to 3 relevant hashtags at the end (e.g., #AI #Automation).\\n- For URLs or references, use placeholders like [Link] instead of raw URLs.\\n- If mentioning users or companies, use official LinkedIn URN format (e.g., \\\"urn:li:organization:123456\\\").\\n\\nContent Rules:\\n- Max 1,200 characters.\\n- Avoid promotional language.\\n- Include one statistical claim or industry insight.\\n- Add one personal anecdote or professional observation.\\n\\nReturn the post as plain text without additional commentary.\\n\\nInput: {{ $json.message.content }}\"\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "id": "a7ccf590-684f-44ee-a4b3-bbf54559cc43",
+      "name": "Research Topic- Perplexity",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -600,
+        340
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": null,
+          "name": "[CONFIGURE_YOUR_PERPLEXITY_API_KEY]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"most-trending\": {\n\n    \"#1\": { \n\n      \"query\":\"{{ $json.related_queries.rising[0].query }}\",\n      \"score\":\"{{ $json.related_queries.rising[0].extracted_value }}\"\n\n    },\n\n\n    \"#2\": { \n\n      \"query\":\"{{ $json.related_queries.rising[1].query }}\",\n      \"score\":\"{{ $json.related_queries.rising[1].extracted_value }}\"\n\n    }\n  }\n}",
+        "options": {}
+      },
+      "id": "78fc7116-a1f6-41c5-b931-c894280f656d",
+      "name": "2 Most Trending",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1420,
+        340
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the top array from your JSON\nconst topItems = $('Google Trends').first().json.related_queries.top;\n\n// Filter the items to only include those with extracted_value > 30\nconst filtered = topItems.filter(item => item.extracted_value > 30);\n\n// Map the filtered items to their query values and join them with commas\nconst resultString = filtered.map(item => item.query).join(', ');\n\n// Return the result in a new JSON property\nreturn [{ json: { result: resultString } }];\n"
+      },
+      "id": "32dcb431-c1ea-45e3-bfdb-68d1cfcf1f6d",
+      "name": "High search volume keywords",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1200,
+        340
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-3.5-turbo",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are part of a team that creates world class blog posts. Your job is to choose the topic for each blog post. \n\nThe blog posts are posted on the website of a [COMPANY NAME + DESCRIPTION + PRODUCTS + TARGET MARKET]. The blog posts are mainly posted as part of an SEO campaign to get [YOUR_COMPANY] to rank high for its products and services.\n\nIn this instance, you are given a list of 2 keywords which have been trending the most on Google news search over the past few days. \n\nYour job is to pick one which you think would make for the most relevant blog post with the best SEO outcomes for the client. \n\nThe keywords have two attributes: \n\n1. query: This attribute determines the search query that users have been searching for which is trending. \n\n2. value: This attribute determines what percentage increase the keyword has seen compared to previous periods (i.e. the increase in search volume). \n\nYou must choose one out of the taking into consideration both the relevance of the keyword for [YOUR_COMPANY]'s SEO efforts and the comparative trendiness determined by the value attribute. \n\nOutput the keyword you decided to post a blog on and nothing else. Don't explain your reasoning. Just output the keyword. \n\nThis instance: \n\nKeyword 1:\n{{ $('2 Most Trending').item.json['most-trending']['#1'].toJsonString() }} \n\nKeyword2: \n{{ $('2 Most Trending').item.json['most-trending']['#2'].toJsonString() }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "afa44082-05e0-4605-9e73-a40a6ff7b5c4",
+      "name": "Choosing Topic",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        -980,
+        340
+      ],
+      "typeVersion": 1.8,
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "[CONFIGURE_YOUR_OPENAI_API_KEY]"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Find Trend\n\n",
+        "height": 240,
+        "width": 400
+      },
+      "id": "5b8d64bb-1d9e-430c-9842-b74285765f84",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1680,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## High Volume Keywords\n\n",
+        "height": 240,
+        "width": 200
+      },
+      "id": "dd4bcc88-9759-491f-9911-fa538d326e9e",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1260,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Choosing Blog Topic\n\n\n",
+        "height": 240,
+        "width": 340
+      },
+      "id": "9353daef-334e-485b-b73b-b9b36c51b9c4",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1020,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Research\n\n\n",
+        "height": 240,
+        "width": 600
+      },
+      "id": "6f691f05-dded-4052-b039-7dc604390ed4",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -640,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "=ai agents"
+            },
+            {
+              "name": "geo",
+              "value": "US"
+            },
+            {
+              "name": "hl",
+              "value": "en"
+            },
+            {
+              "name": "date",
+              "value": "={{ $now.minus({ days: 3 }).format('yyyy-MM-dd') }} {{ $now.format('yyyy-MM-dd') }}"
+            },
+            {
+              "name": "data_type",
+              "value": "RELATED_QUERIES"
+            },
+            {
+              "name": "engine",
+              "value": "google_trends"
+            },
+            {
+              "name": "api_key",
+              "value": "8859d4147d1374df557c9056e777193917fbfbd0ccf288aba0e0f7376e837e3b"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "07531134-7987-42da-b65c-144d5f2c5fe9",
+      "name": "Google Trends",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -1640,
+        340
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "id": "c8436061-fd43-4502-b8ac-ade6d6327f01",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        -380,
+        340
+      ],
+      "webhookId": "[GENERATED_WEBHOOK_ID]",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "## Multi Social Media Posting",
+        "height": 800
+      },
+      "id": "c46e786e-5537-4177-be6c-7d43424d56c5",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Status update",
+        "height": 260
+      },
+      "id": "a34d3ff4-4338-4678-b8e6-d9ef224a82de",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        260,
+        260
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {
+    "Google Trends": [
+      {
+        "json": {
+          "search_metadata": {
+            "id": "6871315d792d684528704ac6",
+            "status": "Success",
+            "json_endpoint": "https://serpapi.com/searches/670863b68c660430/6871315d792d684528704ac6.json",
+            "created_at": "2025-07-11 15:44:29 UTC",
+            "processed_at": "2025-07-11 15:44:29 UTC",
+            "google_trends_url": "https://trends.google.com/trends/embed/explore/RELATED_QUERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22ai+agents%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222025-07-08+2025-07-11%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+            "raw_html_file": "https://serpapi.com/searches/670863b68c660430/6871315d792d684528704ac6.html",
+            "prettify_html_file": "https://serpapi.com/searches/670863b68c660430/6871315d792d684528704ac6.prettify",
+            "total_time_taken": 6.67
+          },
+          "search_parameters": {
+            "engine": "google_trends",
+            "q": "ai agents",
+            "hl": "en",
+            "geo": "US",
+            "date": "2025-07-08 2025-07-11",
+            "tz": "420",
+            "data_type": "RELATED_QUERIES"
+          },
+          "related_queries": {
+            "rising": [
+              {
+                "query": "langchain vs langgraph",
+                "value": "Breakout",
+                "extracted_value": 15550,
+                "link": "https://trends.google.com/trends/explore?q=langchain+vs+langgraph&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=langchain+vs+langgraph&tz=420"
+              },
+              {
+                "query": "grok 4",
+                "value": "Breakout",
+                "extracted_value": 12550,
+                "link": "https://trends.google.com/trends/explore?q=grok+4&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=grok+4&tz=420"
+              },
+              {
+                "query": "jasper ai",
+                "value": "Breakout",
+                "extracted_value": 12300,
+                "link": "https://trends.google.com/trends/explore?q=jasper+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=jasper+ai&tz=420"
+              },
+              {
+                "query": "what is the purpose of an orchestrator agent?",
+                "value": "Breakout",
+                "extracted_value": 7000,
+                "link": "https://trends.google.com/trends/explore?q=what+is+the+purpose+of+an+orchestrator+agent?&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=what+is+the+purpose+of+an+orchestrator+agent%3F&tz=420"
+              },
+              {
+                "query": "agentic ai vs generative ai",
+                "value": "+350%",
+                "extracted_value": 350,
+                "link": "https://trends.google.com/trends/explore?q=agentic+ai+vs+generative+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=agentic+ai+vs+generative+ai&tz=420"
+              },
+              {
+                "query": "supabase",
+                "value": "+250%",
+                "extracted_value": 250,
+                "link": "https://trends.google.com/trends/explore?q=supabase&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=supabase&tz=420"
+              },
+              {
+                "query": "ai agent marketplace",
+                "value": "+180%",
+                "extracted_value": 180,
+                "link": "https://trends.google.com/trends/explore?q=ai+agent+marketplace&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=ai+agent+marketplace&tz=420"
+              },
+              {
+                "query": "zendesk ai agents",
+                "value": "+170%",
+                "extracted_value": 170,
+                "link": "https://trends.google.com/trends/explore?q=zendesk+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=zendesk+ai+agents&tz=420"
+              },
+              {
+                "query": "crew ai",
+                "value": "+150%",
+                "extracted_value": 150,
+                "link": "https://trends.google.com/trends/explore?q=crew+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=crew+ai&tz=420"
+              },
+              {
+                "query": "lindy ai",
+                "value": "+130%",
+                "extracted_value": 130,
+                "link": "https://trends.google.com/trends/explore?q=lindy+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=lindy+ai&tz=420"
+              },
+              {
+                "query": "ramp agents",
+                "value": "+90%",
+                "extracted_value": 90,
+                "link": "https://trends.google.com/trends/explore?q=ramp+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=ramp+agents&tz=420"
+              }
+            ],
+            "top": [
+              {
+                "query": "agents in ai",
+                "value": "100",
+                "extracted_value": 100,
+                "link": "https://trends.google.com/trends/explore?q=agents+in+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=agents+in+ai&tz=420"
+              },
+              {
+                "query": "best ai agents",
+                "value": "51",
+                "extracted_value": 51,
+                "link": "https://trends.google.com/trends/explore?q=best+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=best+ai+agents&tz=420"
+              },
+              {
+                "query": "ai agent",
+                "value": "50",
+                "extracted_value": 50,
+                "link": "https://trends.google.com/trends/explore?q=ai+agent&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=ai+agent&tz=420"
+              },
+              {
+                "query": "what is ai agents",
+                "value": "43",
+                "extracted_value": 43,
+                "link": "https://trends.google.com/trends/explore?q=what+is+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=what+is+ai+agents&tz=420"
+              },
+              {
+                "query": "what are ai agents",
+                "value": "34",
+                "extracted_value": 34,
+                "link": "https://trends.google.com/trends/explore?q=what+are+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=what+are+ai+agents&tz=420"
+              },
+              {
+                "query": "agentic ai",
+                "value": "24",
+                "extracted_value": 24,
+                "link": "https://trends.google.com/trends/explore?q=agentic+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=agentic+ai&tz=420"
+              },
+              {
+                "query": "google ai agents",
+                "value": "21",
+                "extracted_value": 21,
+                "link": "https://trends.google.com/trends/explore?q=google+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=google+ai+agents&tz=420"
+              },
+              {
+                "query": "build ai agents",
+                "value": "18",
+                "extracted_value": 18,
+                "link": "https://trends.google.com/trends/explore?q=build+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=build+ai+agents&tz=420"
+              },
+              {
+                "query": "building ai agents",
+                "value": "18",
+                "extracted_value": 18,
+                "link": "https://trends.google.com/trends/explore?q=building+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=building+ai+agents&tz=420"
+              },
+              {
+                "query": "free ai agents",
+                "value": "15",
+                "extracted_value": 15,
+                "link": "https://trends.google.com/trends/explore?q=free+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=free+ai+agents&tz=420"
+              },
+              {
+                "query": "open ai agents",
+                "value": "15",
+                "extracted_value": 15,
+                "link": "https://trends.google.com/trends/explore?q=open+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=open+ai+agents&tz=420"
+              },
+              {
+                "query": "open ai",
+                "value": "14",
+                "extracted_value": 14,
+                "link": "https://trends.google.com/trends/explore?q=open+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=open+ai&tz=420"
+              },
+              {
+                "query": "openai",
+                "value": "12",
+                "extracted_value": 12,
+                "link": "https://trends.google.com/trends/explore?q=openai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=openai&tz=420"
+              },
+              {
+                "query": "mcp",
+                "value": "12",
+                "extracted_value": 12,
+                "link": "https://trends.google.com/trends/explore?q=mcp&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=mcp&tz=420"
+              },
+              {
+                "query": "mcp ai agents",
+                "value": "11",
+                "extracted_value": 11,
+                "link": "https://trends.google.com/trends/explore?q=mcp+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=mcp+ai+agents&tz=420"
+              },
+              {
+                "query": "ai voice agents",
+                "value": "11",
+                "extracted_value": 11,
+                "link": "https://trends.google.com/trends/explore?q=ai+voice+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=ai+voice+agents&tz=420"
+              },
+              {
+                "query": "copilot agents",
+                "value": "10",
+                "extracted_value": 10,
+                "link": "https://trends.google.com/trends/explore?q=copilot+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=copilot+agents&tz=420"
+              },
+              {
+                "query": "ai automation",
+                "value": "10",
+                "extracted_value": 10,
+                "link": "https://trends.google.com/trends/explore?q=ai+automation&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=ai+automation&tz=420"
+              },
+              {
+                "query": "n8n ai",
+                "value": "10",
+                "extracted_value": 10,
+                "link": "https://trends.google.com/trends/explore?q=n8n+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=n8n+ai&tz=420"
+              },
+              {
+                "query": "n8n",
+                "value": "10",
+                "extracted_value": 10,
+                "link": "https://trends.google.com/trends/explore?q=n8n&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=n8n&tz=420"
+              },
+              {
+                "query": "zendesk ai agents",
+                "value": "4",
+                "extracted_value": 4,
+                "link": "https://trends.google.com/trends/explore?q=zendesk+ai+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=zendesk+ai+agents&tz=420"
+              },
+              {
+                "query": "ramp agents",
+                "value": "3",
+                "extracted_value": 3,
+                "link": "https://trends.google.com/trends/explore?q=ramp+agents&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=ramp+agents&tz=420"
+              },
+              {
+                "query": "lindy ai",
+                "value": "2",
+                "extracted_value": 2,
+                "link": "https://trends.google.com/trends/explore?q=lindy+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=lindy+ai&tz=420"
+              },
+              {
+                "query": "crew ai",
+                "value": "2",
+                "extracted_value": 2,
+                "link": "https://trends.google.com/trends/explore?q=crew+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=crew+ai&tz=420"
+              },
+              {
+                "query": "agentic ai vs generative ai",
+                "value": "1",
+                "extracted_value": 1,
+                "link": "https://trends.google.com/trends/explore?q=agentic+ai+vs+generative+ai&date=2025-07-08+2025-07-11&geo=US",
+                "serpapi_link": "https://serpapi.com/search.json?data_type=RELATED_QUERIES&date=2025-07-08+2025-07-11&engine=google_trends&geo=US&hl=en&q=agentic+ai+vs+generative+ai&tz=420"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-11T15:45:53.000Z",
+  "versionId": "d1a1e117-f33b-4afb-8629-4e527fe06920"
+}

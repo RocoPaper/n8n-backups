@@ -1,0 +1,71 @@
+{
+  "active": false,
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Hacker News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-28T16:23:56.609Z",
+  "id": "F1JT9ET085epiPDY",
+  "isArchived": false,
+  "meta": null,
+  "name": "RSS Read",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -20,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "4ee1bd66-4c85-4464-a954-93d4f016f485"
+    },
+    {
+      "parameters": {
+        "resource": "all",
+        "additionalFields": {}
+      },
+      "name": "Hacker News",
+      "type": "n8n-nodes-base.hackerNews",
+      "position": [
+        200,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "4d38fa58-bff2-45a3-b0e2-2aed9b1865ca"
+    },
+    {
+      "parameters": {
+        "url": "https://techcrunch.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        220
+      ],
+      "id": "353134af-76ac-4521-be7b-bfaa150fa8b3",
+      "name": "RSS Read"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-29T15:33:20.000Z",
+  "versionId": "2806cb37-ddf1-4bf2-b87a-f2e3d07670f8"
+}

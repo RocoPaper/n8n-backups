@@ -22,6 +22,28 @@
           }
         ]
       ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-05-21T14:36:04.057Z",
@@ -37,15 +59,15 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        0,
-        0
+        -60,
+        -100
       ],
       "id": "85231a05-94d9-4700-977e-984606dbc7e4",
       "name": "When clicking ‘Test workflow’"
     },
     {
       "parameters": {
-        "text": "This is test from N8n",
+        "text": "={{ $json.output }}",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.twitter",
@@ -65,7 +87,6 @@
     },
     {
       "parameters": {
-        "promptType": "define",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -76,6 +97,40 @@
       ],
       "id": "5b135473-87ef-41c2-bfa0-bef210ee0d5c",
       "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        180,
+        220
+      ],
+      "id": "13b0bdbb-1d17-4d63-93e9-56a9a4ee7831",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9MJ1ZDhJNTFHTIFm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -60,
+        100
+      ],
+      "id": "4de5711c-5304-4076-8673-eced9795974e",
+      "name": "When chat message received",
+      "webhookId": "b552be4f-00d2-4a04-b7ff-bf34d09536f6"
     }
   ],
   "pinData": {},
@@ -85,6 +140,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-05-21T14:39:18.000Z",
-  "versionId": "690cc2a7-ed91-461c-913e-584c6564f439"
+  "updatedAt": "2025-06-28T15:30:11.000Z",
+  "versionId": "cc7c63b8-6ecd-4446-a3ed-5e5680c80d03"
 }

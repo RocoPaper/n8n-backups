@@ -1,0 +1,66 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Map A Website And Get Urls",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-01T20:03:46.313Z",
+  "id": "g5xqzYfB7JordszH",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Firecrawl Test",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "85f30731-ec71-4c48-b1d5-37151dce167c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "Default",
+        "operation": "Map A Website And Get Urls",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-firecrawl.fireCrawl",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "6fde1e75-a545-4e1b-aa7e-97123701c5a1",
+      "name": "Map A Website And Get Urls",
+      "credentials": {
+        "fireCrawlApi": {
+          "id": "ocgaxODcvJg9r0od",
+          "name": "FireCrawl account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-01T20:07:31.000Z",
+  "versionId": "a2aacd55-fc44-4333-98d2-86009e24c6ca"
+}

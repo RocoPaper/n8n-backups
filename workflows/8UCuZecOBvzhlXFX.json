@@ -1,0 +1,2210 @@
+{
+  "active": false,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "MongoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Transform news to MD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "MongoDB4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "MongoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "MongoDB5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "MongoDB6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "MongoDB7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Wordpress1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code10": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code12": {
+      "main": [
+        [
+          {
+            "node": "MongoDB15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code14": {
+      "main": [
+        [
+          {
+            "node": "MongoDB16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Set and Normalize Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB3": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB5": {
+      "main": [
+        [
+          {
+            "node": "AI Agent7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB7": {
+      "main": [
+        [
+          {
+            "node": "AI Agent5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB8": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent3": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent5": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent6": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent7": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB15": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Image": {
+      "main": [
+        [
+          {
+            "node": "Set metatag1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Read RSS News Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wordpress1": {
+      "main": [
+        [
+          {
+            "node": "Set Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wordpress2": {
+      "main": [
+        [
+          {
+            "node": "Code14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set metatag1": {
+      "main": [
+        [
+          {
+            "node": "Wordpress2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Upload image2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload image2": {
+      "main": [
+        [
+          {
+            "node": "Code12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Articles Daily": {
+      "main": [
+        [
+          {
+            "node": "Set Tech News RSS Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent5",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent6",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent7",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Articles Daily1": {
+      "main": [
+        [
+          {
+            "node": "MongoDB8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Articles Daily2": {
+      "main": [
+        [
+          {
+            "node": "MongoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Articles Daily3": {
+      "main": [
+        [
+          {
+            "node": "MongoDB3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read RSS News Feeds": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform news to MD": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tech News RSS Feeds": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set and Normalize Fields": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser3": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser4": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent7",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-29T17:17:38.003Z",
+  "id": "8UCuZecOBvzhlXFX",
+  "isArchived": false,
+  "meta": null,
+  "name": "Content Farming - : AI-Powered Blog Automation for WordPress",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "rss",
+        "options": {}
+      },
+      "id": "eb6730a6-4016-4f6c-bcfc-2eaa7c7d3e99",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        -2020,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 12
+            }
+          ]
+        }
+      },
+      "id": "4fabca94-6982-4f2b-8386-cd7b8c397517",
+      "name": "Get Articles Daily",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -2460,
+        160
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "## Step 1. Save news in a vector store (runs daily)",
+        "height": 820,
+        "width": 2420,
+        "color": 3
+      },
+      "id": "83bbf131-d44d-451c-bbbd-a64dd494928b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2520,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b8c00469-890b-4b5b-8e2e-2ad9ec2d0815",
+              "name": "rss",
+              "type": "array",
+              "value": "=[\n  \"https://feeds.bbci.co.uk/news/technology/rss.xml\",\n  \"https://www.wired.com/feed/rss\",\n  \"https://www.technologyreview.com/topnews.rss\",\n  \"https://techcrunch.com/feed/\",\n\"https://www.marktechpost.com/feed/\",\n\"https://hackernoon.com/feed\",\n\"https://www.artificialintelligence-news.com/feed/\"\n]\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4aad0fe-c9e5-4f38-b2f5-1b70a35ffcc4",
+      "name": "Set Tech News RSS Feeds",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -2240,
+        160
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rss }}",
+        "options": {
+          "ignoreSSL": false
+        }
+      },
+      "id": "01e7fb94-6728-4ea1-a453-d8e0d2f513a0",
+      "name": "Read RSS News Feeds",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "position": [
+        -1800,
+        160
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e9f27ceb-c5f2-4997-8cb1-67576a7bb337",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "id": "4c4f9417-40f2-4fb0-9976-d09f5984680f",
+              "name": "content",
+              "type": "string",
+              "value": "={{ $json['content:encodedSnippet'] ?? $json.contentSnippet}}"
+            },
+            {
+              "id": "e1986bac-054e-4240-ba50-536dbcd27337",
+              "name": "date",
+              "type": "string",
+              "value": "={{ $json.isoDate}}"
+            },
+            {
+              "id": "9566e23c-ac30-4d66-abbd-889f322688b7",
+              "name": "link",
+              "type": "string",
+              "value": "={{ $json.link }}"
+            },
+            {
+              "id": "61203b8d-7198-4087-83dc-83ac83afa5b1",
+              "name": "categories",
+              "type": "string",
+              "value": "={{ $json.categories }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bb463f49-ecd5-4de6-bebe-b52e3592772d",
+      "name": "Set and Normalize Fields",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1440,
+        160
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "dba3e341-ed6d-48cd-ba1d-61a9a9c56c7a",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -1260,
+        360
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "inputText": "=Title: {{ $json.title }}\nContent: {{ $json.content }}\nCategories: {{ $json.categories }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "=AI",
+              "description": "AI and Artificial Intelligence related articles "
+            }
+          ]
+        },
+        "options": {
+          "fallback": "discard"
+        }
+      },
+      "id": "8e0befec-4472-4f88-94d9-0648d1a28d1c",
+      "name": "Text Classifier",
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "position": [
+        -1200,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Step 2: Relevance scoring\n\nConsider improving this by using\n- [serp api](https://serpapi.com/dashboard)\n- [jina ai](https://jina.ai/api-dashboard/reader)\n- [perplexity ai](https://www.perplexity.ai/)\n- [open ai web search](https://www.youtube.com/watch?v=eeuLRpvQ3DY)",
+        "height": 800,
+        "width": 1140,
+        "color": 5
+      },
+      "id": "5739b297-4efb-4e56-91b2-103f73b775f1",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        40,
+        -20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Here are 24 trending AI-related articles published today:\n\n {{ JSON.stringify($json.data) }}\n\nFrom this, generate:\n1. 10 unique long-tail blog title ideas based on these trends\n2. For each title, suggest:\n   - Main keyword\n   - Related keywords\n   - Suggested angle or tone (e.g. educational, provocative, analytical)\n3. Ensure each title is SEO-friendly, non-generic, and future-resilient\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a content strategist for an AI-focused blog.\n"
+        }
+      },
+      "id": "b98c38e1-a225-4c73-8db1-b53765d97afc",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        240,
+        220
+      ],
+      "retryOnFail": true,
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "0bcde948-b939-4412-9ea6-46987edd8ddb",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        140,
+        440
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "852f45dc-4d50-4e7d-a3e9-c50eeb3ba448",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        60,
+        220
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n  \"title\": \"Why Code Review AI Like CriticGPT Might Replace Juniors\",\n  \"main_keyword\": \"AI code review\",\n  \"related_keywords\": [\"CriticGPT\", \"OpenAI\", \"developer tools\", \"LLM code agent\"],\n  \"tone\": \"analytical\",\n  \"link_articles\": [\"https://www.hatica.io/blog/future-of-code-reviews-2025-trends/\", \"https://graphite.dev/blog/ai-wont-replace-human-code-review\", \"https://medium.com/@ravibiswas0909/can-ai-replace-junior-developers-my-honest-take-861c7d430ce7\"],\n  \"date\": \"2025-06-16\"\n},{\n  \"title\": \"Huawei AI chips that power BYD and self driving cars in china\",\n  \"main_keyword\": \"AI chips\",\n  \"related_keywords\": [\"Huawei\", \"AI\", \"self driving cars\", \"BYD\"],\n  \"tone\": \"skeptical\",\n  \"link_articles\": [\"https://technode.com/2025/03/11/chinas-gac-to-sell-level-3-autonomous-driving-vehicles-with-huawei/\", \"https://www.reuters.com/business/autos-transportation/chinas-byd-use-huaweis-advanced-autonomous-driving-system-off-road-evs-2024-08-27/\", \"https://schen583.medium.com/huawei-intelligent-driving-solutions-overview-a-16-billion-valued-automotive-tier-1-f88f4bdfdff9\"],\n  \"date\": \"2025-06-16\"\n}\n]\n"
+      },
+      "id": "46b0ae35-cafc-41d3-9190-8aa792a4b168",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        500,
+        420
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "dda47c0b-b0b2-46f0-a469-cd1b0e1b8152",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              },
+              "leftValue": "={{ $json.isoDate }}",
+              "rightValue": "={{ $now.minus(1,\"days\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1296e61a-3e0a-428b-9af9-adf57318a328",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        -1620,
+        160
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "## Steps\n1. RSS Feed Ingestion (Daily Trigger)\n[x] Fetch latest articles from curated AI RSS feeds:\n[x] OpenAI, Meta AI, DeepMind, arXiv AI, HuggingFace, TechCrunch AI, VentureBeat AI, etc.\n[x] Deduplicate and store links + metadata (title, date, summary)\n\n2. Relevance Filtering\n[x] Filter for articles:\n[x] Published within last 24 hours\n[x] Containing key topics: model releases, tool updates, research, AI regulation, etc.\n[x] Score relevance using: Keyword match, Named entity recognition, Popularity heuristics (retweet count, domain authority, etc.)\n\n3. Content Summarization\n[x] Summarize 2–3 selected articles using extractive + abstractive methods\nExtract:\n[x] Key ideas\n[x] Notable names (models, companies, researchers)\n[x] Quotes or stats\n\n4. Long-Tail Angle Generation\nConvert short-tail news into long-tail evergreen angles: E.g. “OpenAI launches CriticGPT” → “Why AI Code Review Will Replace Junior Engineers”\nUse prompt chaining:\n[x] Step 1: extract the core topic\n[x] Step 2: generate 5 long-tail blog titles with intent match (e.g., 'how', 'why', 'what's next')\n[x] Step 3: score titles based on uniqueness + search intent\n\n5. SEO-Driven Outline Creation\nGenerate outline optimized for:\n[x] H1 + H2 structure\n[x] Natural keyword inclusion\n[x] Featured snippet targeting\n[x] Structure: Intro → Background → Trend → Insight → Forecast → CTA\n\n6. Full-Length Blog Drafting\n[x] Draft 1,000–1,500 word blog using outline\nInclude:\n[x] Citations from original articles\n[x] External links for trust\n[x] Analogies, examples, future implications\n[x] Maintain tone: informative, thought-leader, semi-technical\n\n7. SEO Enrichment\nGenerate:\n[x] Meta title (60 chars)\n[x] Meta description (160 chars)\n[x] Alt text for images\n[x] Slug URL with keyword\n[x] Auto-check for keyword density, passive voice, Flesch score\n\n8. Image Generation (Optional)\n[x] Create featured image using AI (e.g., DALL·E)\n\n9. Export & Publish\n[x] Export article in Markdown or HTML\n[x] Push to CMS (e.g., WordPress REST API)\n[x] publish immediately\n[ ] schedule\n\n10. Logging & Feedback Loop\n[x] Log:\n- Source articles\n- Generated title\n- Keywords used\n- Post URL\n- Store in database for:\n- Deduplication\n- Trend tracking\n- Traffic correlation\n[ ] Feedback loop:\n\n\n",
+        "height": 1360,
+        "width": 1020,
+        "color": 7
+      },
+      "id": "1e9dc0af-2da2-4874-9bb0-be51eb244057",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3600,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Step 3: Research the news articles\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 800,
+        "width": 2400,
+        "color": 4
+      },
+      "id": "1325ddc8-737a-4095-a567-9f89faed7fb0",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2520,
+        900
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "={{ $json[\"link_articles\"] }}",
+        "options": {}
+      },
+      "id": "05b27b8a-fa67-47fb-965f-9fec9f7404f0",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -1480,
+        1300
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "body",
+              "cssSelector": "body",
+              "skipSelectors": "img"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3751e688-9e9e-46c0-af2c-6d467d041afb",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "position": [
+        -1300,
+        1300
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "c7d053ad-0296-48c1-8740-c62b1682bc17",
+      "name": "OpenAI Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -920,
+        1500
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Below is an article. Extract the 3 most important sentences that summarize the factual content. Do not interpret. Only copy exact sentences.\n\nUse that to extract and list:\n1. write a 2-paragraph summary of the article in your own words.\n2. Key concepts or ideas\n3. Names of companies, models, or researchers\n4. Any quoted statements or numerical/statistical claims\n\nHere is the article:\n {{ $json.data }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "2f200f9e-f67a-4cc8-b293-fd0671bea6f6",
+      "name": "AI Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -860,
+        1300
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"abstract_summary\": \"...\",\n  \"ideas\": [\"...\"],\n  \"names\": [\"OpenAI\", \"CriticGPT\"],\n  \"quotes_or_stats\": [\"'70% faster than human review'\", \"CriticGPT released in June 2025\"]\n}\n"
+      },
+      "id": "0bdd7a30-495b-4b7b-92dc-7a6ba0c9e2cd",
+      "name": "Structured Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -640,
+        1500
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "articles",
+        "options": {}
+      },
+      "id": "358a7489-5274-4e97-afaa-f857a5d7d62a",
+      "name": "Aggregate1",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        -1460,
+        1100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a viral blog strategist. Given the following blog article concept: {{ JSON.stringify($json) }}\n\nGenerate 5 compelling blog post titles that:\n- Evoke curiosity or urgency\n- Include emotional or controversial angles\n- Use long-tail keywords for SEO\n- Are clear, specific, and make the reader want to click\n- Follow formats like:\n  - “Why [X] Is About to Change Everything in [Y]”\n  - “The Hidden Truth About [Topic]”\n  - “How [Persona] Are Using [X] to [Y]”\n  - “What No One Tells You About [Topic]”\n  - “X Predictions About the Future of [Topic] That’ll Shock You”\n\nEnd your response with:  \n**Core Topic:** [a single phrase summarizing the article idea]\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "d6810984-15cb-41e0-8dd7-57404675919e",
+      "name": "AI Agent2",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -2060,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "generate blog title ideas"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "d17937b2-3cdc-480b-a7d9-ba65a802412c",
+      "name": "OpenAI Chat Model3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -2040,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"titles\": [\n    \"Why AI Code Review Will Replace Junior Engineers\",\n    \"How AI is Reshaping Software QA in 2025\",\n    \"What CriticGPT Means for Developer Workflows\",\n    \"The Future of Code Reviews: AI vs Human Engineers\",\n    \"5 Benefits of Using AI for Code Quality Control\"\n  ],\n  \"core_topic\" : \"AI software engineers\"\n}"
+      },
+      "id": "42a386e1-c210-4e96-91b0-9e7f4310b3e4",
+      "name": "Structured Output Parser2",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -1920,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "id": "2acd1141-b9fc-4204-b9f6-7430d90206ea",
+      "name": "Split Out2",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        620,
+        220
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "link_articles",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "8e6723e1-52b9-48c5-8cd8-1095aab0ae0f",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        -2100,
+        1180
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "collection": "blog",
+        "fields": "=title,main_keyword,related_keywords,tone,completed_step,link_articles",
+        "options": {
+          "dateFields": "date"
+        }
+      },
+      "id": "688cfd8c-9bae-4d63-a8ef-f5eadd914bed",
+      "name": "MongoDB",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        1020,
+        220
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "collection": "blog",
+        "options": {
+          "limit": 1
+        },
+        "query": "{\"completed_step\":2}"
+      },
+      "id": "90f5c11f-7fea-4446-900a-eda66a259b12",
+      "name": "MongoDB1",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -2280,
+        1180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "## Step 4,5,6,7: Write the article and prepare SEO\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 800,
+        "width": 3880,
+        "color": 6
+      },
+      "id": "e64d8fff-4bdf-47b1-bb3e-87278402d7bf",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2500,
+        1800
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "collection": "blog",
+        "options": {
+          "limit": 1
+        },
+        "query": "{\"completed_step\":3}"
+      },
+      "id": "be2bf71d-5aa9-4fda-8ada-7f8f40dd7042",
+      "name": "MongoDB3",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -2240,
+        1960
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "blog_outline, completed_step",
+        "options": {}
+      },
+      "id": "da61eac1-90ae-4fef-88a2-bdbed199f52d",
+      "name": "MongoDB4",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -380,
+        1960
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rate the following blog titles based on the **core topic**. Score each title out of 10 in:\n1. Uniqueness\n2. SEO keyword clarity\n3. Emotional and curiosity-driven clickbait quality\n\nTitles: {{ JSON.stringify($json.output.titles) }}\nCore Topic: {{ JSON.stringify($json.output.core_topic) }}\n\nReturn a ranked list with justifications for each score. Highlight the best one.\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "92d12b00-27e5-4b22-ba48-45f182fb253e",
+      "name": "AI Agent3",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -1720,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "rate blog title ideas"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "7bb72047-0824-4f18-badd-1282d92a48f3",
+      "name": "OpenAI Chat Model4",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -1680,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n    \"title\": \"Why AI Code Review Will Replace Junior Engineers\",\n    \"uniqueness_score\": 8,\n    \"seo_score\": 7,\n    \"longtail_score\": 9,\n    \"reason\": \"Strong intent signal ('why'), specific audience reference ('junior engineers'), but replacement framing may be oversimplified.\"\n  },\n  {\n    \"title\": \"How AI is Reshaping Software QA in 2025\",\n    \"uniqueness_score\": 6,\n    \"seo_score\": 9,\n    \"longtail_score\": 8,\n    \"reason\": \"Good long-tail and temporal relevance, but the 'reshaping' verb is generic and the angle lacks a unique hook.\"\n  },\n  {\n    \"title\": \"What CriticGPT Means for Developer Workflows\",\n    \"uniqueness_score\": 5,\n    \"seo_score\": 6,\n    \"longtail_score\": 6,\n    \"reason\": \"Moderately informative but lacks specificity, and may be too short-tail. Could benefit from clearer impact framing.\"\n  },\n  {\n    \"title\": \"The Future of Code Reviews: AI vs Human Engineers\",\n    \"uniqueness_score\": 7,\n    \"seo_score\": 8,\n    \"longtail_score\": 9,\n    \"reason\": \"Decent contrast-based framing. 'Future of' titles have strong SEO pull, but risk becoming overused.\"\n  },\n  {\n    \"title\": \"5 Benefits of Using AI for Code Quality Control\",\n    \"uniqueness_score\": 6,\n    \"seo_score\": 10,\n    \"longtail_score\": 8,\n    \"reason\": \"Clear list format, strong SEO structure, but uses a very common benefits-based formula with a broad target.\"\n  }\n]\n"
+      },
+      "id": "d1066a56-d179-44ec-bb5b-6a4159972513",
+      "name": "Structured Output Parser3",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -1580,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "let outline = $input.first().json.output[0].outline || '';\n\n// Step 1: Remove ```markdown and ``` fences\noutline = outline\n  .replace(/```markdown\\n?/g, '')   // remove opening ```markdown\n  .replace(/```/g, '')              // remove closing ```\n  .trim();\n\n// Step 2: Escape backslashes and double quotes\noutline = outline\n  .replace(/\\\\/g, '\\\\\\\\')           // escape backslashes\n  .replace(/\"/g, '\\\\\"');            // escape double quotes\n\nreturn {\n    _id : $('Code7').first().json._id,\n    blog_outline: outline,\n    completed_step : 5\n  }\n"
+      },
+      "id": "34c39c96-9ea8-4878-88b2-d9ed6f0ff221",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -520,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "rank and choose the best one"
+    },
+    {
+      "parameters": {
+        "jsCode": "function escapeQuotes(str) {\n  if (typeof str !== 'string') return str;\n  return str.replace(/\"/g, \"'\");\n}\n\nconst articles = $input.first().json.articles.map(article => {\n  const sanitized = {};\n\n  // Loop through keys and escape problematic strings\n  for (const [key, value] of Object.entries(article)) {\n    if (Array.isArray(value)) {\n      sanitized[key] = value.map(v => escapeQuotes(v));\n    } else if (typeof value === 'string') {\n      sanitized[key] = escapeQuotes(value);\n    } else {\n      sanitized[key] = value;\n    }\n  }\n\n  return sanitized;\n});\n\nconst item_id = $('MongoDB1').first().json._id\n\nreturn {\n    _id: item_id,\n    articles: articles,\n    completed_step: 3\n  }\n"
+      },
+      "id": "8b8f3b47-b618-4119-9483-10383a445044",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1280,
+        1100
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "articles, completed_step",
+        "options": {}
+      },
+      "id": "312b1a05-f97c-44f3-9996-c3f53d3db9dc",
+      "name": "MongoDB2",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -1100,
+        1100
+      ],
+      "typeVersion": 1.2,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an SEO blog strategist.\n\nGiven:\n- Title: {{ $('MongoDB3').item.json.blog_title }}\n- Main keyword: {{ $('MongoDB3').item.json.main_keyword }}\n- Related keywords: {{ JSON.stringify($('MongoDB3').item.json.related_keywords) }}\n- Related articles: {{ JSON.stringify($('MongoDB3').item.json.articles) }}\n\nGenerate a detailed outline for a blog post that:\n- Uses a strong **H1** as the main title\n- Includes **H2 subheadings** for each major section\n- Naturally incorporates the main keyword and related keywords\n- Follows this structure:\n  1. Intro\n  2. Background\n  3. Trend\n  4. Insight\n  5. Forecast\n  6. CTA\n- Is optimized for **featured snippet** inclusion on Google\n\nRespond in Markdown format. Include H1 and H2 tags.\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "23ddb7bf-4561-4182-b2c2-7dd7f46483a3",
+      "name": "AI Agent5",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -860,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "generate blog outline markdown"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "6601314d-e160-4cc4-bc7b-f11a49f5e6d8",
+      "name": "OpenAI Chat Model6",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -860,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $('AI Agent3').first().json.output;\n\n// Add average_score to each item\nfor (const item of input) {\n  item.average_score = (\n    (item.uniqueness_score || 0) +\n    (item.seo_score || 0) +\n    (item.longtail_score || 0)\n  ) / 3;\n}\n\n// Sort by average_score descending\ninput.sort((a, b) => b.average_score - a.average_score);\n\n// Return full sorted list + top blog title\nreturn {\n    blog_title_ideas: input,\n    blog_title: input[0].title,\n    core_topic: $('AI Agent2').first().json.output.core_topic , \n    _id: $('MongoDB3').first().json._id,\n    completed_step : 4\n  }\n"
+      },
+      "id": "60769ff0-8230-418d-84b9-be0045b6ba55",
+      "name": "Code7",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1360,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "rank and choose the best one"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "blog_title, blog_title_ideas, core_topic, completed_step",
+        "options": {}
+      },
+      "id": "d4900693-25f9-4ef9-bfcf-c583ff67e140",
+      "name": "MongoDB7",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -1220,
+        1960
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Use this information:\n\n- **Title**: {{ $('MongoDB3').item.json.blog_title }}\n- **Main Keyword**: {{ $('MongoDB3').item.json.main_keyword }}\n- **Related Keywords**: {{ JSON.stringify($('MongoDB3').item.json.related_keywords) }}\n- **Tone**: {{ $('MongoDB3').item.json.tone }}\n- **Outline**: {{ $('Code3').item.json.blog_outline }}\n- **Related Articles**: {{ JSON.stringify($('MongoDB3').item.json.articles) }}\n- **Citations**: {{ JSON.stringify($('MongoDB3').item.json.link_articles) }}\n\nInstructions:\n\n1. Write approximately 300 to 500 words per section outline\n2. Naturally include the main and related keywords.\n3. Incorporate:\n   - At least 2 **citations** (link to or mention source_articles)\n   - 1 analogy or example for clarity\n   - Future implications or forecasts\n4. Maintain the tone: {{ $('MongoDB3').item.json.tone }}\n5. Write in Markdown format with:\n   - `#` for H1\n   - `##` for H2\n   - bullet points, bold text, or italics where needed\n\nRespond with the full blog article only.\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a professional blog writer for a leading AI publication.\n\nYour job is to write a complete, well-structured, SEO-friendly blog post."
+        }
+      },
+      "id": "7622c58e-573f-44d2-a903-af3c7b33c1fc",
+      "name": "AI Agent6",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -240,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "create blog content"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "id": "ba4bd20a-9ae8-4078-b668-5ef8e8fb526c",
+      "name": "OpenAI Chat Model7",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -300,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "blog_article, completed_step",
+        "options": {}
+      },
+      "id": "e66df07a-9b35-44a3-a15a-4fbc82057c1d",
+      "name": "MongoDB5",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        320,
+        1960
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "let blog_article = $('AI Agent6').first().json.output\nblog_article = blog_article\n  .replace(/```markdown\\n?/g, '')   // remove opening ```markdown\n  .replace(/```/g, '')              // remove closing ```\n  .trim();\n\n// Step 2: Escape backslashes and double quotes\nblog_article = blog_article\n  .replace(/\\\\/g, '\\\\\\\\')           // escape backslashes\n  .replace(/\"/g, '\\\\\"');        \n\nreturn {\n    _id : $('Code7').first().json._id,\n    blog_article: blog_article,\n    completed_step : 6\n  }\n"
+      },
+      "id": "129d0178-4f37-4846-b6aa-41123694125e",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        140,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "rank and choose the best one"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return {\n  ...$input.item.json,\n  completed_step: 2\n}"
+      },
+      "id": "dca12fe2-8cf4-48aa-a44c-fc845ea55b3a",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        840,
+        220
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Based on the blog article below, generate:\n1. A **meta title** (max 60 characters)\n2. A **meta description** (max 160 characters)\n3. An **image alt text** for the featured image\n4. A **URL slug** based on the blog title and keyword\n5. A basic SEO report:\n   - Keyword density for the main keyword\n   - Count of passive voice sentences\n   - Estimated Flesch reading score (0–100 scale)\n\nData:\n- Title: {{ $('MongoDB3').item.json.blog_title }}\n- Main Keyword: {{ $('MongoDB3').item.json.main_keyword }}\n- Related Keywords: {{ JSON.stringify($('MongoDB3').item.json.related_keywords) }}\n- Content: {{ $json.blog_article }}\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an SEO expert."
+        }
+      },
+      "id": "1c5e0581-7548-4b6c-9bde-12ed7ef42079",
+      "name": "AI Agent7",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        500,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "generate meta data"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "d20cf79a-2e1b-4fc6-9c6a-54270205a180",
+      "name": "OpenAI Chat Model8",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        440,
+        2180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "=completed_step,meta_title,meta_description,image_alt_text, slug, seo_report",
+        "options": {}
+      },
+      "id": "779b4bad-144e-4943-a2b8-6b91ee6fa2a9",
+      "name": "MongoDB6",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        1040,
+        1960
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "return {\n    _id : $('Code7').first().json._id,\n    ...$input.first().json.output,\n    completed_step : 7\n  }\n"
+      },
+      "id": "eb2fd521-ff6f-443e-a72a-03ad2a99f202",
+      "name": "Code6",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        880,
+        1960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "rank and choose the best one"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"meta_title\": \"Why AI Code Review Tools Matter\",\n  \"meta_description\": \"Explore how AI is reshaping code reviews and what it means for developers.\",\n  \"image_alt_text\": \"AI reviewing code on a laptop screen\",\n  \"slug\": \"ai-code-review-tools\",\n  \"seo_report\": {\n    \"keyword_density\": \"2.8%\",\n    \"passive_voice_count\": 4,\n    \"flesch_score\": 62.5\n  }\n}"
+      },
+      "id": "d8fae1ca-a5b0-49d6-82d8-7d6dce295665",
+      "name": "Structured Output Parser4",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        720,
+        2160
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "collection": "blog",
+        "options": {
+          "limit": 1
+        },
+        "query": "{\"completed_step\":7}"
+      },
+      "id": "e7e797d4-e9a9-4b83-9597-3731edf54c91",
+      "name": "MongoDB8",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -2180,
+        2740
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "prompt": "={{ $('MongoDB8').item.json.image_alt_text }}",
+        "options": {
+          "size": "1792x1024"
+        }
+      },
+      "id": "6c59e048-c8cc-443a-9f8d-be12c1ddab16",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        -1600,
+        2960
+      ],
+      "typeVersion": 1.8
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Use the blog title, main keyword, and image alt text to craft a image generation prompt that captures a human-centered, emotionally compelling moment related to the image alt text.\n\nImagine a scene that tells a story or captures a pivotal feeling — something symbolic, cinematic, and relatable. Think in terms of real-world settings, natural environments, recognizable objects, or subtle interactions that represent change, tension, or hope. Let the visual convey meaning without relying on text or overt symbols.\n\nAvoid abstract visualizations like circuits, networks, floating data, or robotic aesthetics. Instead, evoke emotion and narrative through setting, lighting, perspective, and atmosphere. Let the image feel like a glimpse into a personal story, a lived moment, or a metaphor unfolding.\n\nDo not include any text or words in the image.\n\nRespond only with the image generation rompt.\n\nBlog Titile: {{ $json.blog_title }}\nMain Keyword: {{ $json.main_keyword }}\nImage Alt Text: {{ $json.image_alt_text }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a creative visual expert in marketing and digital design. Your job is to craft emotionally compelling image prompts that generate click bait images for social media posts\n"
+        }
+      },
+      "id": "5d6029e4-c1c0-47bc-b230-5ae8b066c87a",
+      "name": "AI Agent4",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -1940,
+        2960
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "rate blog title ideas"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "id": "9e33cf45-d3fd-4531-b898-9739fea3a662",
+      "name": "OpenAI Chat Model5",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -1940,
+        3180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {},
+      "id": "9c0021f1-2b52-4d18-978d-976a24e94405",
+      "name": "Structured Output Parser5",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -1780,
+        3180
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "title": "={{ $('MongoDB8').first().json.blog_title }}",
+        "additionalFields": {
+          "authorId": 3,
+          "content": "={{ $json.blog_html }}",
+          "slug": "={{ $('MongoDB8').first().json.slug }}",
+          "status": "draft",
+          "commentStatus": "closed",
+          "sticky": false,
+          "categories": [
+            8
+          ],
+          "postTemplate": {
+            "values": {}
+          }
+        }
+      },
+      "id": "082d9bea-edb9-46cf-9e88-f2a2b09fcd6f",
+      "name": "Wordpress1",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        -80,
+        2740
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://articles.emp0.com/wp-json/wp/v2/posts/{{ $('Wordpress1').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "featured_media",
+              "value": "={{ $('Upload image2').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6c997544-1ba8-48bb-9609-8f16f1c3e559",
+      "name": "Set Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        100,
+        2740
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://articles.emp0.com/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Disposition",
+              "value": "=attachment; filename=\"img-{{ $('MongoDB8').item.json.slug }}.jpg\""
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "id": "882136a3-9b6b-467d-9de3-6e1475c3486d",
+      "name": "Upload image2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -800,
+        2740
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://articles.emp0.com/wp-json/wp/v2/posts/{{ $('Wordpress1').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"meta\":{\n    \"_yoast_wpseo_title\":\"{{ $('MongoDB8').item.json.meta_title }}\",\n    \"_yoast_wpseo_metadesc\":\"{{ $('MongoDB8').item.json.meta_description }}\"\n  }\n}",
+        "options": {}
+      },
+      "id": "36bd4fab-68ba-4b89-9b98-8d5e3da5034f",
+      "name": "Set metatag1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        280,
+        2740
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "jsCode": "return { \n  \"_id\" : $('MongoDB8').first().json._id,\n  \"blog_image_url\": $input.first().json.source_url,\n  completed_step : 8\n};\n"
+      },
+      "id": "d888d07b-84af-4396-a6ee-87f4d3837890",
+      "name": "Code12",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -620,
+        2740
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "=completed_step,blog_image_url",
+        "options": {}
+      },
+      "id": "b687af36-857b-4769-8071-16afe17bfe86",
+      "name": "MongoDB15",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        -440,
+        2740
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "postId": "={{ $('Wordpress1').item.json.id }}",
+        "updateFields": {
+          "status": "publish"
+        }
+      },
+      "id": "c6b925f1-5f94-4d72-9e31-fb481ef516c9",
+      "name": "Wordpress2",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        500,
+        2740
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "blog",
+        "updateKey": "_id",
+        "fields": "completed_step, blog_status, blog_link",
+        "options": {}
+      },
+      "id": "d2d97e31-6f61-421c-b927-10491563eca9",
+      "name": "MongoDB16",
+      "type": "n8n-nodes-base.mongoDb",
+      "position": [
+        900,
+        2740
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "jsCode": "return { \n  \"_id\" : $('MongoDB8').first().json._id,\n  \"blog_status\": \"Publish\",\n  \"blog_link\" : $('Wordpress1').first().json.link, \n  completed_step : 9\n};\n"
+      },
+      "id": "325de728-a393-42bd-b013-639af8963228",
+      "name": "Code14",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        700,
+        2740
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const markdown = $('MongoDB8').first().json.blog_article || '';\n\n// Simple replacements (limited Markdown support)\nlet html = markdown\n  .replace(/^### (.*$)/gim, '<h3>$1</h3>')\n  .replace(/^## (.*$)/gim, '<h2>$1</h2>')\n  .replace(/^# (.*$)/gim, '<h1>$1</h1>')\n  .replace(/\\*\\*(.*?)\\*\\*/gim, '<strong>$1</strong>')\n  .replace(/\\*(.*?)\\*/gim, '<em>$1</em>')\n  .replace(/\\[(.*?)\\]\\((.*?)\\)/gim, '<a href=\"$2\">$1</a>')\n  .replace(/\\n$/gim, '<br />');\n\nhtml = `<div>${html}</div>`; // wrap in container\n\nreturn [{\n  json: {\n    blog_html: html\n  }\n}];\n"
+      },
+      "id": "7a707c15-9dc5-400a-a467-7ebd882c924a",
+      "name": "Code8",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -260,
+        2740
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cloud.leonardo.ai/api/rest/v1/generations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"modelId\": \"b2614463-296c-462a-9586-aafdb8f00e36\",\n  \"contrast\": 3.5,\n  \"prompt\": \"{{$json.prompt }}\",\n  \"num_images\": 1,\n  \"width\": 1472,\n  \"height\": 832,\n  \"styleUUID\": \"111dc692-d470-4eec-b791-3475abac4c46\",\n  \"enhancePrompt\": true\n}",
+        "options": {}
+      },
+      "id": "3c8b3d13-a6ec-4bdd-a60b-df65a7a6e28c",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -1840,
+        2740
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "url": "=https://cloud.leonardo.ai/api/rest/v1/generations/{{ $json.sdGenerationJob.generationId }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b8a8c7f0-8835-43df-991c-874387de760b",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -1300,
+        2740
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "id": "69760e77-e23a-4594-8ae1-490bd53dea0d",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        -1660,
+        2740
+      ],
+      "webhookId": "c6eba895-fa7a-4113-88a0-8352816b4b98",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.generations_by_pk.generated_images[0].url }}",
+        "options": {}
+      },
+      "id": "1ab01a5c-7597-4f6d-a31d-ddc772976437",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -1080,
+        2740
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "content": "## Step 8,9: Generate image and create blog article",
+        "height": 800,
+        "width": 3880
+      },
+      "id": "4efcdda0-60aa-4393-9d9e-8b22b8d0e0c6",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2500,
+        2660
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2,
+              "triggerAtMinute": 20
+            }
+          ]
+        }
+      },
+      "id": "e8169309-03b0-4f99-a415-32e8fc67fdca",
+      "name": "Get Articles Daily1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -2420,
+        2740
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "a2c63680-c497-4f61-bf1b-6188179074db",
+      "name": "Get Articles Daily2",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -2460,
+        1180
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2,
+              "triggerAtMinute": 10
+            }
+          ]
+        }
+      },
+      "id": "4290e039-8292-4c81-ba7f-42310b2c356f",
+      "name": "Get Articles Daily3",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -2420,
+        1960
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {},
+      "id": "a03dd04e-e00f-4c2d-a5b1-65e066d0fb77",
+      "name": "Structured Output Parser6",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -660,
+        2180
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "jsCode": "const base = $('MongoDB8').first().json.image_alt_text || '';\nconst cleanBase = base.replace(/[\"\\n\\r]/g, ''); // Remove double quotes and line breaks\nconst enrichedPrompt = `A cinematic, emotionally compelling scene involving people that captures the essence of: ${cleanBase}. Include visible human figures in natural interaction or meaningful posture, placed in a symbolic setting that reinforces the story.`;\n\nreturn [{\n  json: {\n    prompt: enrichedPrompt\n  }\n}];\n"
+      },
+      "id": "94407060-54fe-4664-a3c7-eb74f36b44f2",
+      "name": "Code9",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -2000,
+        2740
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function stripHtmlTags(html) {\n  return html\n    .replace(/<\\/?[^>]+(>|$)/g, '') // remove all HTML tags\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&')\n    .replace(/&quot;/g, '\"')\n    .replace(/&#39;/g, \"'\")\n    .replace(/&lt;/g, '<')\n    .replace(/&gt;/g, '>');\n}\n\nconst input = $json.body || \"\";\nconst markdownContent = stripHtmlTags(input).trim();\n\nreturn {\n  json: {\n    data: markdownContent\n  }\n};\n"
+      },
+      "id": "b9571b12-50f2-4b7b-bb08-1f25ba0e6bc9",
+      "name": "Transform news to MD",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1080,
+        1300
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get current item data\nlet article = $json.output || {};\n\narticle.link = $('Code10').first().json.link_articles;\n\n// Return with flattened structure\nreturn {\n  json: {\n    ...article\n  }\n};\n"
+      },
+      "id": "2040b6b9-f73c-4c76-b774-ae7b57348973",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -440,
+        1300
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "9730f646-0179-47f5-8fe4-4e1918072231",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        -1900,
+        1180
+      ],
+      "typeVersion": 3,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "id": "a1639fee-4a82-44e5-aece-094305f288fc",
+      "name": "Code10",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -1660,
+        1300
+      ],
+      "typeVersion": 2
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-29T17:17:38.003Z",
+  "versionId": "1d5e59cc-fd03-44be-9928-d0011c8574fc"
+}

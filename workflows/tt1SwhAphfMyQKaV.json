@@ -1,0 +1,133 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model in Perplexity": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-30T14:09:28.648Z",
+  "id": "tt1SwhAphfMyQKaV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Perplexity Test",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "45ec7377-c199-4f2d-aebc-d2c84889688d",
+      "name": "When chat message received",
+      "webhookId": "182999f2-5430-49e1-a7e6-b9bafc638082"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are an advanced News Search agent designed to browse and compile the latest news articles based on user queries using the 'Message a model in Perplexity' tool. Ensure you have proper access to execute searches for current headlines on any topic the user specifies. If access issues arise, clearly inform the user and attempt to resolve them promptly. Your goal is to provide the most up-to-date and relevant news insights consistent with user requests. Remember, current time context is {{ $now }}."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "08e1c3ff-b779-45b0-8418-34a73bcfed95",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        180,
+        220
+      ],
+      "id": "4eb94d74-ccca-4de5-88c0-ef52f7f7184c",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9MJ1ZDhJNTFHTIFm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "sonar",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', `Use this one to search for anything online, liek:\n\"Ask me to find the latest updates, articles, or trends on any topic across the web.\"\n\n\"Need fresh information? Just tell me what to search for online!\"\n\n\"Stay updated — I can help you search the newest news and insights on any subject.\"\n\n\"Curious about something? Let me find the latest information for you online.\"\n\n\"Type in any topic, and I’ll search the web for the most recent and relevant news.\"`, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        420,
+        220
+      ],
+      "id": "9565b5d1-b78a-40fd-bb65-b5cdeea819f8",
+      "name": "Message a model in Perplexity",
+      "credentials": {
+        "perplexityApi": {
+          "id": "NOnePeC9DASTvAIe",
+          "name": "Perplexity account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-01T20:13:32.000Z",
+  "versionId": "c244e539-b5c1-4068-9303-a8c2833eabbc"
+}
